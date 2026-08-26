@@ -1,0 +1,21 @@
+# REFramework runtime data
+reframework/data/
+reframework/logs/
+
+# Game/runtime output
+*.dmp
+*.log
+re2_framework_log.txt
+reframework_crash.dmp
+
+# User and editor files
+LongSwordAssist_config.json
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini
+
+# Save data and third-party binaries
+win64_save/
+*.dll
+*.exe
