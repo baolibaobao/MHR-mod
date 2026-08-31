@@ -1,0 +1,3037 @@
+{
+    "config": {
+        "auto_detect_multiplayer": true,
+        "auto_foresight": false,
+        "auto_iai": false,
+        "diagnostics": true,
+        "enabled": true,
+        "foresight_post_frames": 12,
+        "foresight_pre_frames": 6,
+        "iai_post_frames": 16,
+        "iai_pre_frames": 6,
+        "multiplayer_compat": true,
+        "total_direction_arc": 120,
+        "verbose_damage_dump": false
+    },
+    "events": [
+        {
+            "bank_id": 0,
+            "clock": 136.265,
+            "kind": "marker_foresight",
+            "motion_frame": 12.01937198638916,
+            "motion_id": 1,
+            "node_id": "4143981713",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 139.381,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 2,
+            "node_id": "3352053814",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 140.532,
+            "kind": "motion_change",
+            "motion_frame": 0.00063323974609375,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 140.632,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 5,
+            "node_id": "910491622",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.132,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 142.065,
+            "kind": "motion_change",
+            "motion_frame": 0.0005340576171875,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 142.582,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 5,
+            "node_id": "910491622",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 143.565,
+            "kind": "motion_change",
+            "motion_frame": 26.00241470336914,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 143.948,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 144.448,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 5,
+            "node_id": "910491622",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 144.698,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.215,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 6,
+            "node_id": "2632748308",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.532,
+            "kind": "motion_change",
+            "motion_frame": 40.000736236572266,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.965,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 146.115,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 6,
+            "node_id": "2632748308",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 146.432,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.082,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 104,
+            "node_id": "710957470",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.778,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 147,
+            "node_id": "1265650183",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 148.561,
+            "kind": "motion_change",
+            "motion_frame": 48.000389099121094,
+            "motion_id": 147,
+            "node_id": "3239070790",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 150.862,
+            "kind": "motion_change",
+            "motion_frame": 0.003173828125,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 150.878,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 7,
+            "node_id": "1182836978",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 151.195,
+            "kind": "motion_change",
+            "motion_frame": 18.00004005432129,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.262,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.196,
+            "kind": "motion_change",
+            "motion_frame": 0.00016021728515625,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 156.161,
+            "kind": "marker_foresight",
+            "motion_frame": 178.00057983398438,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 157.928,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 7,
+            "node_id": "1182836978",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 158.245,
+            "kind": "motion_change",
+            "motion_frame": 18.00004005432129,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 158.445,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 158.595,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 6,
+            "node_id": "2632748308",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 158.912,
+            "kind": "motion_change",
+            "motion_frame": 40.000038146972656,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 159.295,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.212,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 6,
+            "node_id": "2632748308",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.528,
+            "kind": "motion_change",
+            "motion_frame": 40.000038146972656,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 161.645,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 161.845,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 5,
+            "node_id": "910491622",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 162.095,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 163.028,
+            "kind": "motion_change",
+            "motion_frame": 0.00016021728515625,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 164.895,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 104,
+            "node_id": "710957470",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 165.545,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 147,
+            "node_id": "1265650183",
+            "weapon_type": 2
+        },
+        {
+            "attack_data_type": "snow.hit.userdata.EmHitAttackShapeData",
+            "attack_object_type": "via.GameObject",
+            "attack_probes": {
+                "get_OwnerType": 1
+            },
+            "attack_shape_center": {
+                "x": -500.73956298828125,
+                "y": 1.7117040157318115,
+                "z": -491.2098388671875
+            },
+            "attack_snapshot": {
+                "fields": {
+                    "<Priority>k__BackingField": 0,
+                    "_CheckTerrainShapeScale": 1.0,
+                    "_CustomShapeType": 1,
+                    "_EnemyHitCheckVec": 0,
+                    "_HitCharacterInterruptType": 0,
+                    "_HitTerrainInterruptType": 0,
+                    "_ShakeWallInfoID": -1,
+                    "_ShapeAttr": 0
+                },
+                "type": "snow.hit.userdata.EmHitAttackShapeData"
+            },
+            "bank_id": 100,
+            "clock": 166.054,
+            "damage_flow": 2,
+            "damaged_direction": {
+                "x": -0.7492609024047852,
+                "y": 0.0,
+                "z": 0.6622748970985413
+            },
+            "damaged_direction_angle": -178.03984334021402,
+            "hit_manager_type": "snow.DamageReceiver.HitInfo",
+            "hit_position": {
+                "x": -504.24176025390625,
+                "y": 1.201313853263855,
+                "z": -490.0238342285156
+            },
+            "hit_probes": null,
+            "hit_snapshot": {
+                "fields": {
+                    "<AttackData>k__BackingField": "sol.REManagedObject*: 00000218CF1A9E88",
+                    "<AttackObject>k__BackingField": "sol.REManagedObject*: 00000218CF1AA068",
+                    "<AttackShapeCenter>k__BackingField": "sol.glm::vec<3,float,0>: 00000217C841FD48",
+                    "<DamageCollider>k__BackingField": "sol.REManagedObject*: 00000218CF1AC4A8",
+                    "<DamageObject>k__BackingField": "sol.REManagedObject*: 000002188EF3E6B8",
+                    "<DamageShapeCenter>k__BackingField": "sol.glm::vec<3,float,0>: 00000217C841F688",
+                    "<DamageShapeFollowJoints>k__BackingField": "sol.REManagedObject*: 00000218CF1ABD28",
+                    "<DamagedDirection>k__BackingField": "sol.glm::vec<3,float,0>: 00000217C84207C8",
+                    "<Position>k__BackingField": "sol.glm::vec<3,float,0>: 00000217C841F4A8",
+                    "<ShapeMoveDirection>k__BackingField": "sol.glm::vec<3,float,0>: 00000217C841FCE8"
+                },
+                "type": "snow.DamageReceiver.HitInfo"
+            },
+            "inside_configured_arc": true,
+            "kind": "damage",
+            "motion_frame": 29.000057220458984,
+            "motion_id": 147,
+            "node_id": "1265650183",
+            "owner_name": "em131_00",
+            "owner_type": 1,
+            "owner_type_name": "via.GameObject",
+            "player_forward": {
+                "x": 0.7261697765192139,
+                "y": 0.0,
+                "z": -0.6875155624602485
+            },
+            "player_position": {
+                "x": -504.8414611816406,
+                "y": 0.4052414298057556,
+                "z": -490.1336669921875
+            },
+            "receiver_index": 0,
+            "reverse_damaged_direction_angle": 1.9601566597859879,
+            "shape_move_direction": {
+                "x": -0.7492609024047852,
+                "y": 0.0,
+                "z": 0.6622748970985413
+            },
+            "source_angle": 1.9601563070020618,
+            "source_position": {
+                "x": -499.3714904785156,
+                "y": 0.7228999733924866,
+                "z": -494.9685974121094
+            },
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 166.059,
+            "kind": "motion_change",
+            "motion_frame": 31.78656578063965,
+            "motion_id": 147,
+            "node_id": "3993670187",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 166.341,
+            "kind": "motion_change",
+            "motion_frame": 48.78662872314453,
+            "motion_id": 147,
+            "node_id": "941394064",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 168.041,
+            "kind": "motion_change",
+            "motion_frame": 150.7866973876953,
+            "motion_id": 147,
+            "node_id": "4047837507",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 168.641,
+            "kind": "motion_change",
+            "motion_frame": 0.7866973876953125,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 168.658,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 7,
+            "node_id": "1182836978",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 168.975,
+            "kind": "motion_change",
+            "motion_frame": 18.00004005432129,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 170.225,
+            "kind": "motion_change",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 2
+        },
+        {
+            "bank_id": 100,
+            "clock": 171.159,
+            "kind": "motion_change",
+            "motion_frame": 0.00016021728515625,
+            "motion_id": 1,
+            "node_id": "2022274678",
+            "weapon_type": 2
+        }
+    ],
+    "game_version": "16.0.2.0",
+    "mod": "LongSwordAssist",
+    "runtime": {
+        "bank_id": 100,
+        "damage_events": 1,
+        "motion_frame": 66.0038070678711,
+        "motion_id": 1,
+        "multiplayer": false,
+        "node_id": "2022274678",
+        "reflex_events": 0,
+        "weapon_type": 2
+    },
+    "type_dumps": {
+        "node_0": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": [
+                100,
+                98,
+                97,
+                96,
+                95,
+                94,
+                93,
+                92,
+                91,
+                90,
+                89,
+                88,
+                87,
+                86,
+                85,
+                84,
+                83,
+                82,
+                81,
+                80,
+                79,
+                78,
+                77,
+                76,
+                75,
+                74,
+                73,
+                72,
+                71,
+                70,
+                99,
+                68,
+                101,
+                134,
+                132,
+                131,
+                130,
+                129,
+                128,
+                127,
+                126,
+                125,
+                124,
+                123,
+                122,
+                121,
+                120,
+                119,
+                69,
+                118,
+                116,
+                115,
+                114,
+                113,
+                112,
+                111,
+                110,
+                109,
+                108,
+                107,
+                106,
+                105,
+                104,
+                103,
+                117,
+                102,
+                67,
+                133,
+                31,
+                30,
+                29,
+                28,
+                27,
+                26,
+                25,
+                24,
+                23,
+                22,
+                21,
+                20,
+                19,
+                18,
+                32,
+                17,
+                15,
+                14,
+                13,
+                12,
+                11,
+                10,
+                9,
+                8,
+                7,
+                6,
+                5,
+                4,
+                3,
+                2,
+                16,
+                1,
+                33,
+                66,
+                65,
+                64,
+                63,
+                62,
+                61,
+                60,
+                59,
+                58,
+                57,
+                56,
+                55,
+                54,
+                53,
+                52,
+                34,
+                51,
+                49,
+                48,
+                47,
+                46,
+                45,
+                44,
+                43,
+                42,
+                41,
+                40,
+                39,
+                38,
+                37,
+                36,
+                50,
+                35
+            ],
+            "condition_indices": null,
+            "conditions": null,
+            "events": null,
+            "parent_index": 4294967295,
+            "state_indices": null
+        },
+        "node_1265650183": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": null,
+            "condition_indices": [
+                6944
+            ],
+            "conditions": [
+                {
+                    "index": 6944,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ConditionQuestBaseSeeThrough"
+                    }
+                }
+            ],
+            "events": null,
+            "parent_index": 4166,
+            "parent_node_id": "532382550",
+            "state_indices": [
+                4253
+            ]
+        },
+        "node_2839200054": {
+            "action_indices": [
+                9129,
+                9130,
+                9131
+            ],
+            "actions": [
+                {
+                    "index": 9129,
+                    "object": {
+                        "fields": {
+                            "_BleedingDamageType": 2,
+                            "_BleedingDamegeFlg": false,
+                            "_CameraType": -1,
+                            "_DamageType": 2,
+                            "_HitDelayFrame": 68,
+                            "_PadType": 255,
+                            "_hitIndex": 41,
+                            "_isDelete": true,
+                            "_workId": 0
+                        },
+                        "type": "snow.player.fsm.PlayerHitAction2"
+                    }
+                },
+                {
+                    "index": 9130,
+                    "object": {
+                        "fields": {
+                            "_ElementID": 310,
+                            "_Frame": 0.0,
+                            "containerID": 150
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ActionSetEffect"
+                    }
+                },
+                {
+                    "index": 9131,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionLongSwordLongSwordShell020"
+                    }
+                }
+            ],
+            "children_indices": [
+                4255,
+                4254
+            ],
+            "condition_indices": [
+                6836,
+                6837,
+                6838,
+                6839,
+                6840,
+                6841,
+                6842,
+                6843,
+                6844,
+                6845,
+                6846,
+                6847,
+                6848,
+                6849,
+                1073744299,
+                6850,
+                6851,
+                6852,
+                6853,
+                6854,
+                6855,
+                6856
+            ],
+            "conditions": [
+                {
+                    "index": 6836,
+                    "object": {
+                        "fields": {
+                            "CmdType": 196,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6837,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 3,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6838,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 7,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6839,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 2,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6840,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 6,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6841,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6842,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6843,
+                    "object": {
+                        "fields": {
+                            "CmdType": 51,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_Gauge": 25.0,
+                            "_GaugeLv": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_commandWpEnum": 0,
+                            "_conditionWpEnum": 1,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2CommandLongSword"
+                    }
+                },
+                {
+                    "index": 6844,
+                    "object": {
+                        "fields": {
+                            "CmdType": 24,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 5.0,
+                            "StartFrame": 100.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6845,
+                    "object": {
+                        "fields": {
+                            "CmdType": 98,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6846,
+                    "object": {
+                        "fields": {
+                            "CmdType": 97,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6847,
+                    "object": {
+                        "fields": {
+                            "CmdType": 4,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6848,
+                    "object": {
+                        "fields": {
+                            "CmdType": 2,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6849,
+                    "object": {
+                        "fields": {
+                            "CmdType": 1,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 1073744299,
+                    "object": {
+                        "fields": null,
+                        "type": "nil"
+                    }
+                },
+                {
+                    "index": 6850,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6851,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6852,
+                    "object": {
+                        "fields": {
+                            "CmdType": 196,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6853,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 3,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6854,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 7,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6855,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 2,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6856,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 6,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                }
+            ],
+            "events": [
+                {
+                    "index": 3658,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 5
+                },
+                {
+                    "index": 3659,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 6
+                },
+                {
+                    "index": 3660,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2EventLongSwordSubGauge"
+                    },
+                    "transition": 7
+                },
+                {
+                    "index": 3661,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 15
+                },
+                {
+                    "index": 3662,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 16
+                }
+            ],
+            "parent_index": 295,
+            "parent_node_id": "3319244464",
+            "state_indices": [
+                117,
+                305,
+                314,
+                290,
+                312,
+                302,
+                313,
+                4167,
+                241,
+                282,
+                284,
+                281,
+                4006,
+                4010,
+                236,
+                4171,
+                4177,
+                4179,
+                4173,
+                4178,
+                4172,
+                4176
+            ]
+        },
+        "node_3239070790": {
+            "action_indices": [
+                9132
+            ],
+            "actions": [
+                {
+                    "index": 9132,
+                    "object": {
+                        "fields": {
+                            "_BleedingDamageType": 2,
+                            "_BleedingDamegeFlg": false,
+                            "_CameraType": -1,
+                            "_DamageType": 2,
+                            "_HitDelayFrame": 68,
+                            "_PadType": 255,
+                            "_hitIndex": 42,
+                            "_isDelete": true,
+                            "_workId": 0
+                        },
+                        "type": "snow.player.fsm.PlayerHitAction2"
+                    }
+                }
+            ],
+            "children_indices": null,
+            "condition_indices": [
+                6857,
+                6858,
+                6859,
+                6860,
+                6861,
+                6862,
+                6863,
+                6864,
+                6865,
+                6866,
+                6867,
+                6868,
+                6869,
+                1073744300,
+                6870,
+                6871,
+                6872,
+                6873,
+                6874,
+                6875,
+                6876
+            ],
+            "conditions": [
+                {
+                    "index": 6857,
+                    "object": {
+                        "fields": {
+                            "CmdType": 196,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6858,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 3,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6859,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 7,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6860,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 2,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6861,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 6,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6862,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6863,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6864,
+                    "object": {
+                        "fields": {
+                            "CmdType": 24,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 5.0,
+                            "StartFrame": 100.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6865,
+                    "object": {
+                        "fields": {
+                            "CmdType": 98,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6866,
+                    "object": {
+                        "fields": {
+                            "CmdType": 97,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6867,
+                    "object": {
+                        "fields": {
+                            "CmdType": 4,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6868,
+                    "object": {
+                        "fields": {
+                            "CmdType": 2,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6869,
+                    "object": {
+                        "fields": {
+                            "CmdType": 1,
+                            "EndFrame": 150.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 88.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 1073744300,
+                    "object": {
+                        "fields": null,
+                        "type": "nil"
+                    }
+                },
+                {
+                    "index": 6870,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6871,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6872,
+                    "object": {
+                        "fields": {
+                            "CmdType": 196,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6873,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 3,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6874,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 7,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6875,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 2,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6876,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 6,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                }
+            ],
+            "events": [
+                {
+                    "index": 3663,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 5
+                },
+                {
+                    "index": 3664,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 6
+                },
+                {
+                    "index": 3665,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 5,
+                            "_LimitAngle": 20.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 11
+                },
+                {
+                    "index": 3666,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 5,
+                            "_LimitAngle": 20.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 12
+                },
+                {
+                    "index": 3667,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 14
+                },
+                {
+                    "index": 3668,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 15
+                }
+            ],
+            "parent_index": 295,
+            "parent_node_id": "3319244464",
+            "state_indices": [
+                117,
+                305,
+                314,
+                290,
+                312,
+                302,
+                313,
+                241,
+                282,
+                284,
+                281,
+                4006,
+                4010,
+                236,
+                4171,
+                4177,
+                4179,
+                4173,
+                4178,
+                4172,
+                4176
+            ]
+        },
+        "node_3319244464": {
+            "action_indices": [
+                568,
+                569,
+                570
+            ],
+            "actions": [
+                {
+                    "index": 568,
+                    "object": {
+                        "fields": {
+                            "_AttackNameID": 32,
+                            "_CommandNameID": 46,
+                            "isHiddenCombo": false
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ActionAttackNameUI"
+                    }
+                },
+                {
+                    "index": 569,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionContinueCombo"
+                    }
+                },
+                {
+                    "index": 570,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionLongSwordResetShell020Data"
+                    }
+                }
+            ],
+            "children_indices": [
+                4166,
+                4167,
+                4168,
+                4169,
+                4170,
+                4171,
+                4172,
+                4173,
+                4174,
+                4175,
+                4176,
+                4177,
+                4178,
+                4179
+            ],
+            "condition_indices": null,
+            "conditions": null,
+            "events": null,
+            "parent_index": 11,
+            "parent_node_id": "3586204872",
+            "state_indices": null
+        },
+        "node_3586204872": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": [
+                276,
+                292,
+                291,
+                290,
+                289,
+                288,
+                287,
+                286,
+                293,
+                285,
+                283,
+                282,
+                281,
+                280,
+                279,
+                278,
+                277,
+                284,
+                313,
+                294,
+                314,
+                312,
+                311,
+                310,
+                309,
+                308,
+                307,
+                306,
+                295,
+                305,
+                303,
+                302,
+                301,
+                300,
+                299,
+                298,
+                297,
+                304,
+                296,
+                275,
+                274,
+                252,
+                251,
+                250,
+                249,
+                248,
+                247,
+                246,
+                253,
+                245,
+                243,
+                242,
+                241,
+                240,
+                239,
+                238,
+                237,
+                244,
+                236,
+                254,
+                273,
+                272,
+                271,
+                270,
+                269,
+                268,
+                267,
+                266,
+                255,
+                265,
+                263,
+                262,
+                261,
+                260,
+                259,
+                258,
+                257,
+                264,
+                256
+            ],
+            "condition_indices": null,
+            "conditions": null,
+            "events": null,
+            "parent_index": 0,
+            "parent_node_id": "0",
+            "state_indices": null
+        },
+        "node_3993670187": {
+            "action_indices": [
+                9222
+            ],
+            "actions": [
+                {
+                    "index": 9222,
+                    "object": {
+                        "fields": {
+                            "_Frame": 0.0,
+                            "_PadType": 13
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ActionVibrationPad"
+                    }
+                }
+            ],
+            "children_indices": null,
+            "condition_indices": null,
+            "conditions": null,
+            "events": null,
+            "parent_index": 4166,
+            "parent_node_id": "532382550",
+            "state_indices": null
+        },
+        "node_3998119818": {
+            "action_indices": [
+                8503,
+                8504,
+                8505,
+                8506,
+                8507,
+                8508
+            ],
+            "actions": [
+                {
+                    "index": 8503,
+                    "object": {
+                        "fields": {
+                            "PlayerStatus": 0,
+                            "_IsFlyToStand": false,
+                            "_NotInitCommand": false,
+                            "_weaponState": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Action"
+                    }
+                },
+                {
+                    "index": 8504,
+                    "object": {
+                        "fields": {
+                            "_WeaponSet": true,
+                            "_weaponBankID": 0,
+                            "_weaponMotID": 4294967295,
+                            "_weaponMotType": 1
+                        },
+                        "type": "snow.PlayerPlayMotion2"
+                    }
+                },
+                {
+                    "index": 8505,
+                    "object": {
+                        "fields": {
+                            "_BleedingDamageType": 2,
+                            "_BleedingDamegeFlg": false,
+                            "_CameraType": -1,
+                            "_DamageType": 2,
+                            "_HitDelayFrame": 24,
+                            "_PadType": 255,
+                            "_hitIndex": 2,
+                            "_isDelete": true,
+                            "_workId": 0
+                        },
+                        "type": "snow.player.fsm.PlayerHitAction2"
+                    }
+                },
+                {
+                    "index": 8506,
+                    "object": {
+                        "fields": {
+                            "_AttackNameID": 342,
+                            "_CommandNameID": 2,
+                            "isHiddenCombo": false
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ActionAttackNameUI"
+                    }
+                },
+                {
+                    "index": 8507,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionContinueCombo"
+                    }
+                },
+                {
+                    "index": 8508,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionTeamAtk"
+                    }
+                }
+            ],
+            "children_indices": [
+                4215,
+                4214
+            ],
+            "condition_indices": [
+                6349,
+                6350,
+                6351,
+                6352,
+                6353,
+                6354,
+                6355,
+                6356,
+                6357,
+                6358,
+                6359,
+                6360,
+                6361,
+                6362,
+                6363,
+                1073744172
+            ],
+            "conditions": [
+                {
+                    "index": 6349,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 18.0,
+                            "StartFrame": 32.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6350,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 18.0,
+                            "StartFrame": 32.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6351,
+                    "object": {
+                        "fields": {
+                            "CmdType": 24,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6352,
+                    "object": {
+                        "fields": {
+                            "CmdType": 196,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6353,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 3,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6354,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 7,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6355,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 2,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6356,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 6,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6357,
+                    "object": {
+                        "fields": {
+                            "CmdType": 5,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 12.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6358,
+                    "object": {
+                        "fields": {
+                            "CmdType": 51,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6359,
+                    "object": {
+                        "fields": {
+                            "CmdType": 98,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6360,
+                    "object": {
+                        "fields": {
+                            "CmdType": 97,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6361,
+                    "object": {
+                        "fields": {
+                            "CmdType": 4,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 34.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6362,
+                    "object": {
+                        "fields": {
+                            "CmdType": 3,
+                            "EndFrame": 0.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 10.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6363,
+                    "object": {
+                        "fields": {
+                            "CkFrame": 110.0,
+                            "CmdType": 3,
+                            "_ApprovalCondition": 0,
+                            "_CkEndFrame": 999.0,
+                            "_CkLayer": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ConditionStick"
+                    }
+                },
+                {
+                    "index": 1073744172,
+                    "object": {
+                        "fields": null,
+                        "type": "nil"
+                    }
+                }
+            ],
+            "events": [
+                {
+                    "index": 3405,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 0
+                },
+                {
+                    "index": 3406,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 1
+                },
+                {
+                    "index": 3407,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 3,
+                            "_LimitAngle": 0.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 8
+                },
+                {
+                    "index": 3408,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 5,
+                            "_LimitAngle": 40.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 9
+                },
+                {
+                    "index": 3409,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 5,
+                            "_LimitAngle": 20.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 13
+                },
+                {
+                    "index": 3410,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2EventAttackNameUI"
+                    },
+                    "transition": 13
+                },
+                {
+                    "index": 3411,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 15,
+                            "_LimitAngle": 0.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 14
+                }
+            ],
+            "parent_index": 272,
+            "parent_node_id": "821499877",
+            "state_indices": [
+                302,
+                313,
+                241,
+                117,
+                305,
+                314,
+                290,
+                312,
+                295,
+                275,
+                282,
+                284,
+                4012,
+                4011,
+                252,
+                236
+            ]
+        },
+        "node_4047837507": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": null,
+            "condition_indices": null,
+            "conditions": null,
+            "events": null,
+            "parent_index": 4168,
+            "parent_node_id": "2839200054",
+            "state_indices": null
+        },
+        "node_532382550": {
+            "action_indices": [
+                9121,
+                9122,
+                9123,
+                9124,
+                9125,
+                9126,
+                9127,
+                9128
+            ],
+            "actions": [
+                {
+                    "index": 9121,
+                    "object": {
+                        "fields": {
+                            "PlayerStatus": 0,
+                            "_IsFlyToStand": false,
+                            "_NotInitCommand": false,
+                            "_weaponState": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Action"
+                    }
+                },
+                {
+                    "index": 9122,
+                    "object": {
+                        "fields": {
+                            "_WeaponSet": true,
+                            "_weaponBankID": 0,
+                            "_weaponMotID": 4294967295,
+                            "_weaponMotType": 1
+                        },
+                        "type": "snow.PlayerPlayMotion2"
+                    }
+                },
+                {
+                    "index": 9123,
+                    "object": {
+                        "fields": {
+                            "_BleedingDamageType": 0,
+                            "_BleedingDamegeFlg": false,
+                            "_CameraType": -1,
+                            "_DamageType": 2,
+                            "_HitDelayFrame": 0,
+                            "_PadType": 255,
+                            "_hitIndex": 29,
+                            "_isDelete": true,
+                            "_workId": 0
+                        },
+                        "type": "snow.player.fsm.PlayerHitAction2"
+                    }
+                },
+                {
+                    "index": 9124,
+                    "object": {
+                        "fields": {
+                            "_StartFrame": 0.0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ActionSeeThroughAttack"
+                    }
+                },
+                {
+                    "index": 9125,
+                    "object": {
+                        "fields": {
+                            "_AddFrame": 0.0,
+                            "_AddTime": 40.0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2MutekiTimer"
+                    }
+                },
+                {
+                    "index": 9126,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionLongSwordSubGauge"
+                    }
+                },
+                {
+                    "index": 9127,
+                    "object": {
+                        "fields": {
+                            "_ElementID": 300,
+                            "_Frame": 0.0,
+                            "containerID": 150
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2ActionSetEffect"
+                    }
+                },
+                {
+                    "index": 9128,
+                    "object": {
+                        "fields": null,
+                        "type": "snow.player.fsm.PlayerFsm2ActionTeamAtk"
+                    }
+                }
+            ],
+            "children_indices": [
+                4253,
+                4252
+            ],
+            "condition_indices": [
+                6828,
+                6829,
+                6830,
+                6831,
+                6832,
+                6833,
+                6834,
+                6835,
+                1073744297
+            ],
+            "conditions": [
+                {
+                    "index": 6828,
+                    "object": {
+                        "fields": null,
+                        "type": "via.behaviortree.ConditionUserVariable"
+                    }
+                },
+                {
+                    "index": 6829,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6830,
+                    "object": {
+                        "fields": {
+                            "CmdType": 155,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 4,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6831,
+                    "object": {
+                        "fields": {
+                            "CmdType": 196,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 0,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6832,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 3,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6833,
+                    "object": {
+                        "fields": {
+                            "CmdType": 38,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 7,
+                            "_transitionNumber": 0,
+                            "atkType": 6,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6834,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 2,
+                            "_IsForMr": false,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 73,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 6835,
+                    "object": {
+                        "fields": {
+                            "CmdType": 37,
+                            "EndFrame": 52.0,
+                            "GroupEnd": true,
+                            "Group_Command": true,
+                            "Group_ReplaceFlag": true,
+                            "PreFrame": 20.0,
+                            "StartFrame": 38.0,
+                            "_ConditionCommonEnum": 0,
+                            "_IsForMr": true,
+                            "_IsOptionDirectionType": true,
+                            "_WireSkill": 6,
+                            "_transitionNumber": 0,
+                            "atkType": 5,
+                            "replaceType": 1
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2Command"
+                    }
+                },
+                {
+                    "index": 1073744297,
+                    "object": {
+                        "fields": null,
+                        "type": "nil"
+                    }
+                }
+            ],
+            "events": [
+                {
+                    "index": 3654,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 1
+                },
+                {
+                    "index": 3655,
+                    "object": {
+                        "fields": {
+                            "_AngleSetType": 1,
+                            "_LimitAngle": 180.0,
+                            "_MotionBlendRateSetType": 0
+                        },
+                        "type": "snow.player.fsm.PlayerFsm2EventStateInitOption"
+                    },
+                    "transition": 2
+                }
+            ],
+            "parent_index": 295,
+            "parent_node_id": "3319244464",
+            "state_indices": [
+                4170,
+                4171,
+                4177,
+                4179,
+                4173,
+                4178,
+                4172,
+                4176,
+                236
+            ]
+        },
+        "node_710957470": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": null,
+            "condition_indices": [
+                1073744326
+            ],
+            "conditions": [
+                {
+                    "index": 1073744326,
+                    "object": {
+                        "fields": null,
+                        "type": "nil"
+                    }
+                }
+            ],
+            "events": null,
+            "parent_index": 4010,
+            "parent_node_id": "3998119818",
+            "state_indices": [
+                4215
+            ]
+        },
+        "node_821499877": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": [
+                4010,
+                4011,
+                4012,
+                4013
+            ],
+            "condition_indices": null,
+            "conditions": null,
+            "events": null,
+            "parent_index": 11,
+            "parent_node_id": "3586204872",
+            "state_indices": null
+        },
+        "node_941394064": {
+            "action_indices": null,
+            "actions": null,
+            "children_indices": null,
+            "condition_indices": [
+                1073744344
+            ],
+            "conditions": [
+                {
+                    "index": 1073744344,
+                    "object": {
+                        "fields": null,
+                        "type": "nil"
+                    }
+                }
+            ],
+            "events": null,
+            "parent_index": 4168,
+            "parent_node_id": "2839200054",
+            "state_indices": [
+                4255
+            ]
+        }
+    }
+}
