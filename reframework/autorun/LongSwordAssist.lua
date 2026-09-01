@@ -207,10 +207,16 @@ end
 local function signed_source_angle(player_position, player_forward, source_position)
     if player_position == nil or player_forward == nil or source_position == nil then return nil end
     local dx = source_position.x - player_position.x
+    local dy = source_position.y - player_position.y
     local dz = source_position.z - player_position.z
     local source_length = math.sqrt(dx * dx + dz * dz)
     local forward_length = math.sqrt(player_forward.x * player_forward.x + player_forward.z * player_forward.z)
-    if source_length < 0.0001 or forward_length < 0.0001 then return nil end
+    if forward_length < 0.0001 then return nil end
+    -- Overhead/ground attacks can have no meaningful horizontal projection.
+    -- Treat a genuinely vertical source as neutral yaw instead of rejecting it.
+    if source_length < 0.0001 then
+        return math.abs(dy) >= 0.25 and 0.0 or nil
+    end
 
     dx, dz = dx / source_length, dz / source_length
     local fx, fz = player_forward.x / forward_length, player_forward.z / forward_length
@@ -224,9 +230,14 @@ end
 local function signed_direction_angle(player_forward, direction)
     if player_forward == nil or direction == nil then return nil end
     local dx, dz = -direction.x, -direction.z
+    local dy = direction.y or 0.0
     local direction_length = math.sqrt(dx * dx + dz * dz)
     local forward_length = math.sqrt(player_forward.x * player_forward.x + player_forward.z * player_forward.z)
-    if direction_length < 0.0001 or forward_length < 0.0001 then return nil end
+    if forward_length < 0.0001 then return nil end
+    -- DamagedDirection is sometimes almost purely vertical for head/foot hits.
+    if direction_length < 0.0001 then
+        return math.abs(dy) >= 0.25 and 0.0 or nil
+    end
     dx, dz = dx / direction_length, dz / direction_length
     local fx, fz = player_forward.x / forward_length, player_forward.z / forward_length
     local dot = math.max(-1.0, math.min(1.0, fx * dx + fz * dz))
