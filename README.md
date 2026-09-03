@@ -48,6 +48,8 @@
 
 后续版本适配所需的太刀 `motfsm2`、`rcol` 原始拆包资源，以及运行时节点拆解 JSON，保存在 [`analysis`](analysis/README.md) 目录。该目录仅用于分析和维护，不属于安装内容。
 
+开发过程中验证过的 Motion FSM、Action/Node 索引、DamageReflex 判定、Hook、联机过滤和部署注意事项，记录在 [`analysis/MOD_DEVELOPMENT_NOTES.md`](analysis/MOD_DEVELOPMENT_NOTES.md)。
+
 ## 验证状态
 
 - 自动居合：通过

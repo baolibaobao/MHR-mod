@@ -1,5 +1,9 @@
 # Changelog
 
+## Development notes - 2026-09-03
+
+- 新增 `analysis/MOD_DEVELOPMENT_NOTES.md`，记录 Motion FSM Tree 获取、`tree:get_actions()[ActionID]` 直接 Action 路线、NodeIndex/NodeID/ActionID 区分、Static Action 标记、DamageReflex 字段、弓四向闪身箭斩 ActionID、Hook 与部署测试陷阱。
+
 ## 1.0.1 - 2026-09-02
 
 - 修复头部/脚底等纯竖直攻击因水平投影接近零而无法触发自动居合和自动见切的问题。
