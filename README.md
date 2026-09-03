@@ -1,6 +1,6 @@
-# Monster Hunter Rise - Long Sword Assist
+# Monster Hunter Rise Mods
 
-《怪物猎人：崛起》太刀辅助 REFramework Lua Mod。
+《怪物猎人：崛起》REFramework Lua Mod 集合。太刀和弓箭保持为两个独立 Mod，源码与动作分析资料分开维护。
 
 ## 已验证环境
 
@@ -44,9 +44,20 @@
 
 本仓库不包含 REFramework、游戏文件、联机补丁、存档或第三方 DLL。
 
+## 弓箭辅助（BowAssist）
+
+弓箭源码位于 [`BowAssist/reframework/autorun/BowAssist.lua`](BowAssist/reframework/autorun/BowAssist.lua)。当前基线为运行时武器类型 `13`、Bank `100`，手动闪身箭斩方向 Motion `202/203/204/205`，四向 NodeIndex `4281-4284`，已确认 Action `9234/9287/9251/9269`。
+
+- 自动 GP：进入原版闪身箭斩节点，自动功能默认关闭。
+- 手动闪身箭斩判定延长：修改同一次动作的 `_EndFrame`，不重复释放动作，默认延后 `12` Motion 帧。
+- 联机兼容和多人任务检测默认开启，过滤队友及非怪物攻击来源。
+- 中文 REFramework Script Generated UI、状态诊断和采集 JSON。
+
+弓箭的安装说明和参数见 [`BowAssist/README.md`](BowAssist/README.md)；四向 Action、Act10、Motion FSM 原始资源和采集记录见 [`analysis/bow`](analysis/bow/BOW_ACTION_ANALYSIS.md)。
+
 ## 开发与动作拆解资料
 
-后续版本适配所需的太刀 `motfsm2`、`rcol` 原始拆包资源，以及运行时节点拆解 JSON，保存在 [`analysis`](analysis/README.md) 目录。该目录仅用于分析和维护，不属于安装内容。
+后续版本适配所需的太刀 `motfsm2`/`rcol`、弓 `motlist`/`motbank` 原始动作资源，以及运行时节点拆解 JSON，保存在 [`analysis`](analysis/README.md) 目录。该目录仅用于分析和维护，不属于安装内容。
 
 开发过程中验证过的 Motion FSM、Action/Node 索引、DamageReflex 判定、Hook、联机过滤和部署注意事项，记录在 [`analysis/MOD_DEVELOPMENT_NOTES.md`](analysis/MOD_DEVELOPMENT_NOTES.md)。
 
@@ -67,3 +78,5 @@
 - 独立 ImGui 窗口尚未加入，当前界面位于 REFramework 菜单内。
 - 动作替换类 Mod，尤其是太刀 `motbank/motlist`，可能改变动作帧和视觉表现，建议在排查判定问题时临时停用。
 - 使用 Launcher/OnlineFix 时，若启动阶段切走游戏焦点，部分 D3D12/覆盖层组合可能出现启动异常；进入标题画面前保持游戏窗口聚焦。
+
+本次同步只包含源码、动作分析资料和开发记录，不新增任何 Mod 安装包或发布 ZIP；安装包由需要发布时再单独上传。

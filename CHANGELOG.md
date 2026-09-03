@@ -1,5 +1,13 @@
 # Changelog
 
+## Development notes - 2026-09-04
+
+- 同步弓箭独立 Mod 源码 `BowAssist/reframework/autorun/BowAssist.lua` 及使用说明。
+- 归档弓箭第三轮诊断采集 `analysis/captures/BowAssist_capture.json`。
+- 归档弓 Bank 100 的 `plf_Bow_100.motlist.528`、`plf_Bow_bank.motbank.3` 原始动作资源，并补充四向 `202/203/204/205`、NodeIndex `4281-4284`、Action `9234/9287/9251/9269` 维护记录。
+- 明确弓箭运行时武器类型为 `13`，`Action_gx = 61` 仅为版本偏移；补充 Act10、Static Action、`checkCalcDamage_DamageSide` 和多人空攻击对象的排查结论。
+- 本次不新增或同步 Mod 安装包、DLL、工具包和发布 ZIP。
+
 ## Development notes - 2026-09-03
 
 - 新增 `analysis/MOD_DEVELOPMENT_NOTES.md`，记录 Motion FSM Tree 获取、`tree:get_actions()[ActionID]` 直接 Action 路线、NodeIndex/NodeID/ActionID 区分、Static Action 标记、DamageReflex 字段、弓四向闪身箭斩 ActionID、Hook 与部署测试陷阱。

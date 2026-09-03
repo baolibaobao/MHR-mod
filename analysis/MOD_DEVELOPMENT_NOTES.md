@@ -400,7 +400,58 @@ OwnerType == 1
 6. 多人任务测试怪物攻击、队友攻击和 `AttackObject` 为空的同步事件；确认联机兼容只过滤来源，不屏蔽手动判定。
 7. 退出游戏后再分析 JSON/日志，不在游戏运行时反复切换大规模探针；发现异常先回滚备份。
 
-## 11. 测试与部署清单
+## 11. 弓箭开发记录（2026-09-03）
+
+本节记录弓箭 `BowAssist.lua` 当前版本的实现和已完成采集。弓箭与太刀是两个独立 Lua Mod；弓箭动作表、NodeIndex 和成功窗口不能直接套用太刀的数字。
+
+### 11.1 运行时基线
+
+- 游戏版本：`16.0.2.0`，REFramework TDB `71`。
+- `_playerWeaponType = 13` 是运行时弓类型；开始菜单枚举中的 `PlayerWeaponType.BOW = 10` 不能用于运行时判断。
+- 动作库为 `Bank 100`。手动闪身箭斩的四向动作库是 `Motion 202/203/204/205`，不是早期误判的 `452/456`。
+- `Motion 452/456` 仅用于自动入口已经进入原版闪身箭斩后的执行确认。
+
+### 11.2 四向 Node 和 Action
+
+四向 Motion FSM 节点数组位置为 `NodeIndex 4281-4284`。它们不是全局 ActionID，也不应直接写成 `tree:get_actions()[4281]`。当前版本同时保留两条解析路径：
+
+1. 从 Node 的 `get_data():get_actions()` 读取 Act10，优先把原始值交给 `tree:get_action(raw_index)`，保留 Static Action 标记。
+2. 使用已验证的四向 Action 回退表：前 `9234`、后 `9287`、左 `9251`、右 `9269`。
+
+参考 Lua Mod 的 `Action_gx = 61` 只说明当时 `9173/9226/9190/9208 + 61` 的版本偏移，不能当作永久常量。游戏更新、动作替换 Mod 或动作表重排后，必须重新确认类型和帧字段。
+
+### 11.3 手动判定延长
+
+手动闪身箭斩延长只写入同一次动作的 DamageReflex/Act10 `_EndFrame`，不重新调用原版闪身箭斩入口。每个对象首次发现时缓存原始结束帧，目标值为“原始结束帧 + 设置的延后 Motion 帧”；关闭功能、切换 Motion FSM Tree 或重载脚本时恢复原值。当前默认延后 `12` 帧，测试时调到 `60` 代表 Motion 帧而非毫秒。
+
+四向 Act10 扫描结果达到 `4/4` 时，说明四个方向都有可写目标。关闭延长后同一提前量恢复原版受击，说明改动作用在成功判定窗口，而不是再次释放动作。
+
+### 11.4 自动 GP 与手动路径分离
+
+自动 GP 走 `snow.player.PlayerQuestBase.checkCalcDamage_DamageSide`：确认接收者为主玩家、武器类型为 `13`、原版伤害流程仍为可接管状态，并通过 `BehaviorTree:setCurrentNode(...)` 进入原版闪身箭斩节点。pending 计时只用来确认是否进入 `452/456`，不会把确认事件当作第二次动作请求。
+
+手动延长不依赖自动入口，也不依赖 `checkDamageReflexNoDamageHitEnable(...)` 必须被调用。后者在当前弓路径中可以保持 `0` 次；实际受击应以 DamageSide 的伤害事件、攻击来源和返回值为准。
+
+### 11.5 采集结果和诊断解释
+
+- 第三轮采集确认了弓 `13`、Bank `100`、四向 Motion 变化，以及怪物对象 `em131_00` 的 `EmHitAttackShapeData`/`DummyHitAttackShapeData` 受击。
+- 采集时“GP 成功”标记有一部分是在后续射箭或收弓动作中点击，只能作为人工标记，不能单独证明成功窗口。
+- `反射动作 / 成功条件 = 0 / 0` 只表示诊断 Hook 没看到候选反射入口；它不等于四向 Action 没有被修改。应同时检查 `Motion FSM Act10 目标 / 已修改` 和 `已知 Action 目标 / 已修改`。
+- “最近 Motion FSM 目标”曾固定显示“右”，原因是静态扫描最后一项覆盖了摘要；当前代码改为显示四向汇总和目标计数。
+
+### 11.6 联机兼容
+
+联机兼容默认开启，多人检测默认开启，自动 GP/自动闪身箭斩默认关闭。集会所属于在线会话，但“多人任务（任务中）”只有在任务状态有效且玩家数/多人信号成立时才显示“是”。
+
+自动入口过滤顺序为：主玩家接收者 -> `OwnerType == 1` -> `EmHitAttack`/`DummyHitAttack` -> 有对象时匹配 `em###`。多人同步时 `AttackObject` 为空是正常情况，不能单独按空对象丢弃；手动判定沿原版路径，不被联机过滤开关屏蔽。
+
+### 11.7 维护边界
+
+- 只把 `BowAssist/reframework/autorun/BowAssist.lua` 作为安装源码；`analysis/raw` 的动作文件仅供版本适配。
+- 不把 `弓.zip`、`dinput8.dll`、`treeToolkit` 或游戏配置同步为发布内容。
+- 出现 `0/0`、节点未探测或启动卡顿时，先停用大规模扫描和动作替换 Mod，再用已知 Action 回退表验证；不要把参考 Mod 原样合并进主脚本。
+
+## 12. 测试与部署清单
 
 ### 测试
 
@@ -419,7 +470,7 @@ OwnerType == 1
 4. 重启游戏让 REFramework 重新加载 Lua。
 5. 出现闪退时先恢复最近一次备份，再根据日志缩小变更范围。
 
-## 12. 参考资料
+## 13. 参考资料
 
 - [BehaviorTree Toolkits 1.21](https://www.caimogu.cc/post/300678.html)：NodeID、NodeIndex、Action/Condition、GP 帧字段和 Hook 思路。
 - `F:\ruanjian\guailiemod\弓\reframework\autorun\g.lua`：弓四向 ActionID 与 `_EndFrame` 直接修改示例。

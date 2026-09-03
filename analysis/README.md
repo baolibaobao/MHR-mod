@@ -1,6 +1,30 @@
-# 太刀动作拆解资料
+# 动作拆解资料
 
-本目录保存《怪物猎人：崛起》16.0.2.0 的太刀动作分析资产，供后续版本适配和功能维护使用。这些文件不是安装包，不应复制到游戏目录。
+本目录保存《怪物猎人：崛起》16.0.2.0 的太刀和弓箭动作分析资产，供后续版本适配和功能维护使用。这些文件不是安装包，不应复制到游戏目录。
+
+## 弓箭动作资料
+
+弓箭的独立分析记录见 [`bow/BOW_ACTION_ANALYSIS.md`](bow/BOW_ACTION_ANALYSIS.md)，当前基线为运行时武器类型 `13`、Bank `100`、手动闪身箭斩 Motion `202/203/204/205`。
+
+### 原始动作资源
+
+```text
+raw/natives/STM/player/mot/plf_Bow_100.motlist.528
+raw/natives/STM/player/mot/plf_Bow_bank.motbank.3
+```
+
+- `plf_Bow_100.motlist.528`：弓 Bank 100 的原始 Motion 列表。
+- `plf_Bow_bank.motbank.3`：弓动作 Bank 索引。
+
+### 弓运行时采集
+
+```text
+captures/BowAssist_capture.json
+```
+
+该采集包含弓 `13`、Bank `100`、四向 Motion、`em131_00` 受击以及 GP 过早/过晚标记。它是诊断证据，不是需要放入游戏目录的配置文件。
+
+四向 NodeIndex `4281-4284`、Act10 读取方式、Action `9234/9287/9251/9269` 和 `Action_gx = 61` 的版本偏移说明，见 [`bow/BOW_ACTION_ANALYSIS.md`](bow/BOW_ACTION_ANALYSIS.md)。
 
 ## 目录内容
 
@@ -83,4 +107,7 @@ A47DDA25415B4BBA349B36D39CB807428EDD6E32DFA33DB81A15D96CC7ABE048  LongSword.motf
 C2AC01F37B258D84FC3AFA99E5B68A190E93E67A58A7F4781BE194088D5C5B0F  LongSword.rcol.20
 334CA332FE2CF367F1E8BCF01F27F2823EB3900C0C85425B9E42DFD2D215A975  LongSwordAssist_capture.json
 94ACEA8D2F49D5D43320626BE6ECADA87FA97494191DB599F9C1D76BD47EA251  LongSwordAssist_transition_probe_legacy_invalid.json
+D7F988CBAA67689D8EB8CB5C884FE211ADD7F0A64D74344894100585EF33B7EB  BowAssist_capture.json
+77D3EC016E2E2017EA8E81EDEE13C4C3C384F5DC37F5C79399382D2E1BF7F8DF  plf_Bow_100.motlist.528
+17B2B46449FD4CD5A642469EEC18A89D0723A4D0B1A62898D75D19A814BFBDC1  plf_Bow_bank.motbank.3
 ```
