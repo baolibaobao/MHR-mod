@@ -3,10 +3,11 @@
 ## Development notes - 2026-09-03
 
 - 新增 `analysis/MOD_DEVELOPMENT_NOTES.md`，记录 Motion FSM Tree 获取、`tree:get_actions()[ActionID]` 直接 Action 路线、NodeIndex/NodeID/ActionID 区分、Static Action 标记、DamageReflex 字段、弓四向闪身箭斩 ActionID、Hook 与部署测试陷阱。
+- 补充太刀开发记录：自动居合/自动见切入口与成功分支、Motion `307` 上一动作缓存、`9124`/`9125` 判定区别、手动窗口延长、竖直攻击、多人来源过滤、诊断性能、闪退和 Mod 冲突排查。
 
 ## 1.0.1 - 2026-09-02
 
-- 修复头部/脚底等纯竖直攻击因水平投影接近零而无法触发自动居合和自动见切的问题。
+- 修复头部/脚底等纯竖直攻击因水平投影接近零而漏触发自动居合和自动见切的问题。
 - 保留原有水平 120 度正面限制；垂直来源攻击按中性水平角 `0` 处理。
 
 ## Development data - 2026-08-31

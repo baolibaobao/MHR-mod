@@ -33,6 +33,8 @@ captures/LongSwordAssist_transition_probe_legacy_invalid.json
 
 `LongSwordAssist_transition_probe_legacy_invalid.json` 是历史探针。其静态节点对象均为 `nil`，仅用于记录失败方案，后续分析不要把它作为节点字段依据。
 
+太刀的入口、成功分支、手动判定窗口、多人过滤、竖直攻击和启动/冲突排查记录，见 [`MOD_DEVELOPMENT_NOTES.md` 的太刀开发记录](MOD_DEVELOPMENT_NOTES.md#10-太刀开发记录已验证)。
+
 ## 已确认动作
 
 | Motion | 含义 | 备注 |
@@ -65,7 +67,7 @@ captures/LongSwordAssist_transition_probe_legacy_invalid.json
 | 9124 | `PlayerFsm2ActionSeeThroughAttack` | `_StartFrame`, `_EndFrame` | 看破成功判定窗口 |
 | 9125 | `PlayerFsm2MutekiTimer` | `_AddFrame = 0`, `_AddTime = 40` | 无敌计时，不等于看破成功窗口 |
 
-实测原版见切成功边界约为第 30 帧。手动见切延长应修改 Action `9124` 的 `_EndFrame`；修改 Action `9125` 的 `_AddTime` 只会改变无敌计时，不能延长看破成功判定。
+实测原版见切成功边界约为第 30 帧。手动见切延长应修改 Action `9124` 的 `_EndFrame`；修改 Action `9125` 的 `_AddTime` 只会改变无敌计时，不会延长看破成功判定。
 
 ## 已确认 Condition
 
@@ -82,4 +84,3 @@ C2AC01F37B258D84FC3AFA99E5B68A190E93E67A58A7F4781BE194088D5C5B0F  LongSword.rcol
 334CA332FE2CF367F1E8BCF01F27F2823EB3900C0C85425B9E42DFD2D215A975  LongSwordAssist_capture.json
 94ACEA8D2F49D5D43320626BE6ECADA87FA97494191DB599F9C1D76BD47EA251  LongSwordAssist_transition_probe_legacy_invalid.json
 ```
-
