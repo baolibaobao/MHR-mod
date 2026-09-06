@@ -62,10 +62,33 @@ local action = tree:get_action(raw_index) -- Action object
 
 多人同步时攻击对象为空是正常情况，不能仅按空对象拒绝；需要结合攻击类型、OwnerType、任务状态和玩家索引过滤队友攻击。
 
+## 最终自动 GP 修复：同一攻击链的重复 DamageSide 回调
+
+最后一次回归中，单次怪物命中会在相邻帧调用两次
+`checkCalcDamage_DamageSide`。第一次回调已经提交原版闪身箭斩入口，但在
+`Motion 452/456` 出现前，第二次回调仍可能带着相同攻击继续进入原版受击动作。
+这会表现为“界面显示自动 GP 成功，但角色仍被击中”，也容易被误判成周期锁或
+弓的持弓状态判断错误。
+
+最终状态机分成四个独立阶段：
+
+1. **入口提交**：第一次符合条件的怪物伤害只提交一次原版闪身箭斩节点。
+2. **同链保护**：入口提交后的 `3` 个 Lua 帧内，同一攻击链的重复伤害回调直接
+   走拦截返回，不再次提交动作，也不进入受击动作。
+3. **动作确认**：只有实际观察到 `Motion 452/456` 才记录自动 GP 动作进入，并
+   启动动作周期锁。
+4. **动作结束与重置**：周期锁在动作结束后解除；同链保护只覆盖入口等待期，
+   不会把连续独立攻击永久锁死。
+
+因此，周期锁不是本次问题的根因；它只负责已经进入闪身箭斩后的重复发动。真正
+缺失的是入口到 `452/456` 之间的同一攻击链保护。后续修改入口时必须同时验证：
+“第一次请求一次、相邻重复回调拦截、动作中不二次 GP、动作结束后可重新触发”。
+
 ## 证据文件
 
-- [`../captures/BowAssist_capture.json`](../captures/BowAssist_capture.json)：第三轮诊断采集，含武器 `13`、Bank `100`、四向 Motion 变化、`em131_00` 受击和 GP 过早/过晚标记。
+- [`../captures/BowAssist_capture.json`](../captures/BowAssist_capture.json)：完整诊断采集，含武器 `13`、Bank `100`、四向 Motion 变化、`em131_00` 受击、GP 过早/过晚标记和最终同一攻击链重复回调证据。
 - [`../raw/natives/STM/player/mot/plf_Bow_100.motlist.528`](../raw/natives/STM/player/mot/plf_Bow_100.motlist.528)：弓 Bank 100 原始 Motion 列表。
 - [`../raw/natives/STM/player/mot/plf_Bow_bank.motbank.3`](../raw/natives/STM/player/mot/plf_Bow_bank.motbank.3)：弓动作 Bank 索引。
+- [`../raw/natives/STM/player/Fsm/Bow/Bow.motfsm2.43`](../raw/natives/STM/player/Fsm/Bow/Bow.motfsm2.43)：弓 Motion FSM 原始资源。
 
 原始资源来自本机已安装游戏版本，仅用于版本适配和索引核对；不要把它们当作安装文件复制到游戏目录。

@@ -1,0 +1,507 @@
+{
+    "game_version": "16.0.2.0",
+    "mod": "LongSwordKamuiCapture",
+    "purpose": "手动神威居合 Motion 161 -> 162 运行时采集",
+    "runtime": {
+        "bank_id": 100,
+        "behavior_node_id": 2605267967,
+        "motion_id": 162,
+        "motion_node_id": 0,
+        "transition_count": 1,
+        "weapon_type": 2
+    },
+    "transitions": [
+        {
+            "after": {
+                "bank_id": 100,
+                "behavior_node_id": 2605267967,
+                "clock": 128.977,
+                "motion_frame": 1.0000020265579224,
+                "motion_id": 162,
+                "motion_node_id": 0,
+                "weapon_type": 2
+            },
+            "before": {
+                "bank_id": 100,
+                "behavior_node_id": 2874088718,
+                "clock": 128.96,
+                "motion_frame": 45.00011444091797,
+                "motion_id": 161,
+                "motion_node_id": 0,
+                "weapon_type": 2
+            },
+            "kind": "manual_kamui_161_to_162",
+            "nodes": {
+                "148920245": {
+                    "action_objects": [
+                        {
+                            "index": 585,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordResetIaiCounterMode"
+                            }
+                        },
+                        {
+                            "index": 586,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordResetIaiCounterEffect"
+                            }
+                        },
+                        {
+                            "index": 587,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordResetIaiCounterSayaScale"
+                            }
+                        },
+                        {
+                            "index": 588,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordResetShell020Data"
+                            }
+                        }
+                    ],
+                    "actions": [
+                        585,
+                        586,
+                        587,
+                        588
+                    ],
+                    "children": [
+                        0,
+                        1603643176,
+                        2090284966,
+                        1613751206,
+                        2546592923,
+                        1975122386,
+                        3569005589,
+                        2468553679,
+                        460901491,
+                        1753709204,
+                        2250161560,
+                        1960213826,
+                        1714915764,
+                        4177921638,
+                        1251171674,
+                        2665269885,
+                        4010563037,
+                        44618123,
+                        2996356752,
+                        1186029237,
+                        4092244120,
+                        2636031599,
+                        3564270813,
+                        2730865880,
+                        92514231,
+                        137527883,
+                        1003674723,
+                        3105520105,
+                        3246629221,
+                        2345631380,
+                        2605267967,
+                        2893051313,
+                        1409347669,
+                        2236209221
+                    ],
+                    "condition_objects": null,
+                    "data": {
+                        "fields": null,
+                        "read_error": true,
+                        "type": "sol.sdk::behaviortree::TreeNodeData*: 0000023104B6A928"
+                    },
+                    "full_name": "atk.atk_161_MR",
+                    "id": 148920245,
+                    "name": "atk_161_MR",
+                    "parent_index": 11,
+                    "states": null,
+                    "states_2": null,
+                    "transition_attributes": null,
+                    "transition_conditions": null,
+                    "transition_events": null,
+                    "transition_ids": null,
+                    "transition_objects": null,
+                    "type": "sol.sdk::behaviortree::TreeNode*: 0000023104B6B198"
+                },
+                "2605267967": {
+                    "action_objects": [
+                        {
+                            "index": 9457,
+                            "object": {
+                                "fields": {
+                                    "PlayerStatus": 0,
+                                    "_IsFlyToStand": false,
+                                    "_NotInitCommand": false,
+                                    "_weaponState": 1
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2Action"
+                            }
+                        },
+                        {
+                            "index": 9458,
+                            "object": {
+                                "fields": {
+                                    "_WeaponSet": true,
+                                    "_weaponBankID": 0,
+                                    "_weaponMotID": 4294967295,
+                                    "_weaponMotType": 1
+                                },
+                                "type": "snow.PlayerPlayMotion2"
+                            }
+                        },
+                        {
+                            "index": 9459,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionIkForceSetUseIkArmFit"
+                            }
+                        },
+                        {
+                            "index": 9460,
+                            "object": {
+                                "fields": {
+                                    "_StartFrame": 0.0
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2ActionSeeThroughAttack"
+                            }
+                        },
+                        {
+                            "index": 9461,
+                            "object": {
+                                "fields": {
+                                    "_CameraOfsAdd": {
+                                        "text": "sol.glm::vec<3,float,0>: 000002310B10C238",
+                                        "type": "sol.glm::vec<3,float,0>: 000002310B10C238"
+                                    },
+                                    "_CameraType": 0,
+                                    "_CurveType": 10,
+                                    "_RefCameraSuggestion": {
+                                        "text": "sol.REManagedObject*: 0000023104B74DD8",
+                                        "type": "snow.camera.CameraSuggestion_PlayerCamera"
+                                    },
+                                    "_Time": 20.0
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordSuccessIaiCounter"
+                            }
+                        },
+                        {
+                            "index": 9462,
+                            "object": {
+                                "fields": {
+                                    "_BleedingDamageType": 2,
+                                    "_BleedingDamegeFlg": false,
+                                    "_CameraType": -1,
+                                    "_DamageType": 2,
+                                    "_HitDelayFrame": 6,
+                                    "_PadType": 255,
+                                    "_hitIndex": 69,
+                                    "_isDelete": true,
+                                    "_workId": 0
+                                },
+                                "type": "snow.player.fsm.PlayerHitAction2"
+                            }
+                        },
+                        {
+                            "index": 9463,
+                            "object": {
+                                "fields": {
+                                    "_ElementID": 300,
+                                    "_Frame": 0.0,
+                                    "containerID": 150
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2ActionSetEffect"
+                            }
+                        },
+                        {
+                            "index": 9464,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordSetCounterSuccessMotionSpeed"
+                            }
+                        },
+                        {
+                            "index": 9465,
+                            "object": {
+                                "fields": {
+                                    "_AttackNameID": 416,
+                                    "_CommandNameID": 88,
+                                    "isHiddenCombo": false
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2ActionAttackNameUI"
+                            }
+                        },
+                        {
+                            "index": 9466,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordResetIaiCounterSayaScale"
+                            }
+                        }
+                    ],
+                    "actions": [
+                        9457,
+                        9458,
+                        9459,
+                        9460,
+                        9461,
+                        9462,
+                        9463,
+                        9464,
+                        9465,
+                        9466
+                    ],
+                    "children": null,
+                    "condition_objects": [
+                        {
+                            "index": 1073744384,
+                            "object": {
+                                "fields": null,
+                                "type": "via.motion.Fsm2ConditionMotionEnd"
+                            }
+                        },
+                        {
+                            "index": 7082,
+                            "object": {
+                                "fields": null,
+                                "type": "via.behaviortree.ConditionUserVariable"
+                            }
+                        }
+                    ],
+                    "data": {
+                        "fields": null,
+                        "read_error": true,
+                        "type": "sol.sdk::behaviortree::TreeNodeData*: 0000023104B6AD38"
+                    },
+                    "full_name": "atk.atk_161_MR.plw_LongSword_100_162 _manual",
+                    "id": 2605267967,
+                    "name": "plw_LongSword_100_162 _manual",
+                    "parent_index": 313,
+                    "states": [
+                        236,
+                        4335
+                    ],
+                    "states_2": [
+                        0,
+                        0
+                    ],
+                    "transition_attributes": [
+                        0,
+                        0
+                    ],
+                    "transition_conditions": [
+                        1073744384,
+                        7082
+                    ],
+                    "transition_events": [
+                        null,
+                        null
+                    ],
+                    "transition_ids": [
+                        1447253570,
+                        406168863
+                    ],
+                    "transition_objects": null,
+                    "type": "sol.sdk::behaviortree::TreeNode*: 0000023103F87098"
+                },
+                "2874088718": {
+                    "action_objects": [
+                        {
+                            "index": 9548,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionMotionSpdSkillWeaponOffIaiCounter"
+                            }
+                        }
+                    ],
+                    "actions": [
+                        9548
+                    ],
+                    "children": null,
+                    "condition_objects": null,
+                    "data": {
+                        "fields": null,
+                        "read_error": true,
+                        "type": "sol.sdk::behaviortree::TreeNodeData*: 0000023104B6CA48"
+                    },
+                    "full_name": "atk.atk_161_MR.plw_LongSword_100_161 - コピー (1).new state AB4F1D0E",
+                    "id": 2874088718,
+                    "name": "new state AB4F1D0E",
+                    "parent_index": 4329,
+                    "states": null,
+                    "states_2": null,
+                    "transition_attributes": null,
+                    "transition_conditions": null,
+                    "transition_events": null,
+                    "transition_ids": null,
+                    "transition_objects": null,
+                    "type": "sol.sdk::behaviortree::TreeNode*: 0000023103F87688"
+                },
+                "4177921638": {
+                    "action_objects": [
+                        {
+                            "index": 9479,
+                            "object": {
+                                "fields": {
+                                    "PlayerStatus": 0,
+                                    "_IsFlyToStand": false,
+                                    "_NotInitCommand": true,
+                                    "_weaponState": 1
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2Action"
+                            }
+                        },
+                        {
+                            "index": 9480,
+                            "object": {
+                                "fields": {
+                                    "_WeaponSet": true,
+                                    "_weaponBankID": 0,
+                                    "_weaponMotID": 4294967295,
+                                    "_weaponMotType": 1
+                                },
+                                "type": "snow.PlayerPlayMotion2"
+                            }
+                        },
+                        {
+                            "index": 9481,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionIkForceSetUseIkArmFit"
+                            }
+                        },
+                        {
+                            "index": 9482,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordIaiCounterHandMotion"
+                            }
+                        },
+                        {
+                            "index": 9483,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordIaiCounterSayaScale"
+                            }
+                        },
+                        {
+                            "index": 9484,
+                            "object": {
+                                "fields": {
+                                    "_AttackNameID": 415,
+                                    "_CommandNameID": 50,
+                                    "isHiddenCombo": false
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2ActionAttackNameUI"
+                            }
+                        },
+                        {
+                            "index": 9485,
+                            "object": {
+                                "fields": {
+                                    "_FirstEffectFrame": 126.0,
+                                    "_IsFirstSet": false,
+                                    "_IsSecondSet": false,
+                                    "_SecondEffectFrame": 162.0,
+                                    "containerID": 150
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2ActionLongSwordMotionSpdSkillWeaponOffIaiCounterEffect"
+                            }
+                        },
+                        {
+                            "index": 9486,
+                            "object": {
+                                "fields": null,
+                                "type": "snow.player.fsm.PlayerFsm2ActionTeamAtk"
+                            }
+                        }
+                    ],
+                    "actions": [
+                        9479,
+                        9480,
+                        9481,
+                        9482,
+                        9483,
+                        9484,
+                        9485,
+                        9486
+                    ],
+                    "children": [
+                        0,
+                        2874088718
+                    ],
+                    "condition_objects": [
+                        {
+                            "index": 7085,
+                            "object": {
+                                "fields": {
+                                    "CmdType": 204,
+                                    "EndFrame": 9999.0,
+                                    "GroupEnd": true,
+                                    "Group_Command": true,
+                                    "Group_ReplaceFlag": true,
+                                    "PreFrame": 25.0,
+                                    "StartFrame": 32.0,
+                                    "_ConditionCommonEnum": 0,
+                                    "_Gauge": 0.0,
+                                    "_GaugeLv": 0,
+                                    "_IsForMr": false,
+                                    "_IsOptionDirectionType": true,
+                                    "_WireSkill": 73,
+                                    "_commandWpEnum": 0,
+                                    "_conditionWpEnum": 0,
+                                    "_transitionNumber": 0,
+                                    "atkType": 0,
+                                    "replaceType": 0
+                                },
+                                "type": "snow.player.fsm.PlayerFsm2CommandLongSword"
+                            }
+                        },
+                        {
+                            "index": 1073744390,
+                            "object": {
+                                "fields": null,
+                                "type": "via.motion.Fsm2ConditionMotionEnd"
+                            }
+                        }
+                    ],
+                    "data": {
+                        "fields": null,
+                        "read_error": true,
+                        "type": "sol.sdk::behaviortree::TreeNodeData*: 0000023104B6D448"
+                    },
+                    "full_name": "atk.atk_161_MR.plw_LongSword_100_161 - コピー (1)",
+                    "id": 4177921638,
+                    "name": "plw_LongSword_100_161 - コピー (1)",
+                    "parent_index": 313,
+                    "states": [
+                        4321,
+                        4311
+                    ],
+                    "states_2": [
+                        0,
+                        0
+                    ],
+                    "transition_attributes": [
+                        0,
+                        0
+                    ],
+                    "transition_conditions": [
+                        7085,
+                        1073744390
+                    ],
+                    "transition_events": [
+                        null,
+                        null
+                    ],
+                    "transition_ids": [
+                        1394345962,
+                        690902114
+                    ],
+                    "transition_objects": null,
+                    "type": "sol.sdk::behaviortree::TreeNode*: 0000023104B6DBC8"
+                }
+            }
+        }
+    ]
+}

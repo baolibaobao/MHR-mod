@@ -10,9 +10,16 @@
 - 太刀动作库：Bank 100
 - 单人任务和多人任务均已完成基础回归测试
 
+三个独立 Lua 脚本：
+
+- `reframework/autorun/LongSwordAssist.lua`：太刀自动居合、自动见切和手动判定延长。
+- `BowAssist/reframework/autorun/BowAssist.lua`：弓自动闪身箭斩、同链保护和手动判定延长。
+- `BowAssist/reframework/autorun/BowBalance.lua`：弓箭倍率、耐力、Buff、距离和射速参数。
+
 ## 功能
 
 - 自动居合：仅使用原版动作，攻击来源位于角色正面 120 度范围内才触发。
+- 自动神威居合：在神威准备 `Motion 161` 中复用原版成功节点进入化解 `Motion 162`。
 - 自动见切：仅从原版允许见切的太刀动作触发。
 - 竖直攻击兼容：头部落下、脚底上挑等主要由垂直方向构成的攻击按中性水平角处理。
 - 手动居合判定延长：延长同一次居合的成功判定，不重复释放动作。
@@ -46,9 +53,10 @@
 
 ## 弓箭辅助（BowAssist）
 
-弓箭源码位于 [`BowAssist/reframework/autorun/BowAssist.lua`](BowAssist/reframework/autorun/BowAssist.lua)。当前基线为运行时武器类型 `13`、Bank `100`，手动闪身箭斩方向 Motion `202/203/204/205`，四向 NodeIndex `4281-4284`，已确认 Action `9234/9287/9251/9269`。
+弓箭源码位于 [`BowAssist/reframework/autorun/BowAssist.lua`](BowAssist/reframework/autorun/BowAssist.lua)，参数脚本位于 [`BowAssist/reframework/autorun/BowBalance.lua`](BowAssist/reframework/autorun/BowBalance.lua)。当前基线为运行时武器类型 `13`、Bank `100`，手动闪身箭斩方向 Motion `202/203/204/205`，四向 NodeIndex `4281-4284`，已确认 Action `9234/9287/9251/9269`。
 
 - 自动 GP：进入原版闪身箭斩节点，自动功能默认关闭。
+- 自动 GP 同一攻击链保护：入口等待期间的相邻重复伤害回调只拦截一次，不二次释放；实际进入 `Motion 452/456` 后才启动动作周期锁。
 - 手动闪身箭斩判定延长：修改同一次动作的 `_EndFrame`，不重复释放动作，默认延后 `12` Motion 帧。
 - 联机兼容和多人任务检测默认开启，过滤队友及非怪物攻击来源。
 - 中文 REFramework Script Generated UI、状态诊断和采集 JSON。
@@ -65,6 +73,7 @@
 
 - 自动居合：通过
 - 自动见切：通过
+- 自动神威居合：通过，确认进入原版化解动作
 - 手动居合延长：通过，动作只释放一次
 - 手动见切延长：通过，延长窗口内显示“手动见切延长判定”
 - 正面攻击：通过

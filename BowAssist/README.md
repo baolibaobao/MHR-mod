@@ -1,6 +1,6 @@
 # BowAssist
 
-弓箭独立 REFramework Lua Mod。`BowAssist.lua` 是当前已部署并完成基础验证的诊断/功能版，和太刀 `LongSwordAssist` 保持为两个独立脚本。
+弓箭独立 REFramework Lua Mod。`BowAssist.lua` 是当前已部署并完成回归验证的功能版，和太刀 `LongSwordAssist` 保持为两个独立脚本。
 
 ## 已验证基线
 
@@ -18,6 +18,7 @@
 ## 当前功能
 
 - 自动 GP：在伤害流程仍为原版受击时，进入原版闪身箭斩节点；动作执行由游戏原版完成。
+- 同一攻击链保护：一次命中在相邻帧重复进入伤害回调时，保护 3 帧内只提交一次入口并拦截重复结算；确认进入 `Motion 452/456` 后才启用周期锁，因此不会在 GP 动作中再次发动。
 - 自动闪身箭斩兼容开关：与自动 GP 使用同一原版入口，保留为独立设置以便后续扩展。
 - 手动闪身箭斩判定延长：只修改同一次动作的 DamageReflex/Act10 `_EndFrame`，不会再次释放闪身箭斩。
 - 联机兼容：默认开启，过滤非主玩家和非怪物攻击；多人同步时攻击对象为空会结合攻击类型判断。
@@ -43,7 +44,11 @@
 
 ```text
 reframework/autorun/BowAssist.lua
+reframework/autorun/BowBalance.lua
 ```
+
+`BowBalance.lua` 是第二个独立弓箭 Mod，负责倍率、耐力、Buff、射程、会心距离和
+射击动作速度；它不参与自动 GP。完整参数见 [`BowBalance_README.md`](BowBalance_README.md)。
 
 运行时配置和采集文件由 REFramework 在游戏目录的 `reframework/data/` 中生成：
 

@@ -19,3 +19,7 @@ desktop.ini
 win64_save/
 *.dll
 *.exe
+
+# Local development builds
+bin/
+obj/

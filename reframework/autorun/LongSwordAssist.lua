@@ -1,16 +1,26 @@
 local MOD_NAME = "LongSwordAssist"
 local CONFIG_PATH = "LongSwordAssist_config.json"
 local TRANSITION_PROBE_PATH = "LongSwordAssist_transition_probe.json"
+local KAMUI_PROBE_PATH = "LongSwordAssist_kamui_probe.json"
 
 local WEAPON_LONG_SWORD = 2
 local FORESIGHT_TARGET_STATE = 295
 
 local NODE_AUTO_IAI_ENTRY = 3716128725
+local NODE_KAMUI_IAI_ENTRY = 2874088718
+-- Captured runtime edge: Motion 161 / Node 2874088718 ->
+-- Motion 162 / Node 2605267967. 3569005589 is a later follow-up node.
+local NODE_KAMUI_SUCCESS = 2605267967
+local NODE_KAMUI_FOLLOWUP = 3569005589
 local NODE_IAI_SUCCESS = 2004603551
 local NODE_FORESIGHT_ENTRY = 532382550
 local NODE_FORESIGHT_ACTIVE = 1265650183
 local NODE_FORESIGHT_SUCCESS = 3993670187
 local ACTION_FORESIGHT_COUNTER = 9124
+-- 神威居合的动作表入口。Motion 161 是 16.0.2.0 的神威居合纳刀/反击准备动作；
+-- 这是从游戏实际使用的 patch_001 FSM 拆包确认的稳定动作编号。
+local KAMUI_Iai_MOTION = 161
+local KAMUI_SUCCESS_MOTION = 162
 
 local IAI_BASE_COUNTER_END = 8.0
 local FORESIGHT_BASE_COUNTER_END = 30.0
@@ -18,6 +28,7 @@ local FORESIGHT_BASE_COUNTER_END = 30.0
 local defaults = {
     enabled = true,
     auto_iai = false,
+    auto_kamui_iai = false,
     auto_foresight = false,
     manual_iai_extension = true,
     manual_foresight_extension = true,
@@ -135,6 +146,8 @@ local runtime = {
     master_index = nil,
     game_object = nil,
     motion_control = nil,
+    motion_layer = nil,
+    motion_fsm_layer = nil,
     behavior_tree = nil,
     motion_tree = nil,
     motion_tree_key = nil,
@@ -153,6 +166,13 @@ local runtime = {
     cooldown = 0,
     pending_foresight = 0,
     pending_foresight_age = 0,
+    pending_kamui = 0,
+    pending_kamui_age = 0,
+    kamui_request_attempts = 0,
+    kamui_request_source = "无",
+    kamui_request_motion = -1,
+    kamui_request_node = 0,
+    kamui_pre_requested = false,
     player_quest_base = nil,
     reflex_object = nil,
     reflex_original_end = nil,
@@ -162,6 +182,7 @@ local runtime = {
     foresight_counter_value = FORESIGHT_BASE_COUNTER_END,
     foresight_counter_ready = false,
     transition_probe_done = false,
+    kamui_probe_done = false,
     last_trigger = "none",
     last_request = "无",
     last_request_node = 0,
@@ -172,6 +193,13 @@ local runtime = {
     last_foresight_hit_frame = -1.0,
     last_event_legal = false,
     last_reject_reason = "无",
+    kamui_scan_ready = false,
+    kamui_entry_ready = false,
+    kamui_success_ready = false,
+    kamui_active = false,
+    kamui_node_id = 0,
+    kamui_action_type = "未探测",
+    kamui_action_mode = "未读取",
 }
 
 local condition_originals = {}
@@ -180,6 +208,14 @@ local foresight_window_conditions = {}
 local iai_conditions = {}
 local scan_index = 0
 local scan_complete = false
+local function container_size(container)
+    if container == nil then return 0 end
+    local ok, size = pcall(function() return container:size() end)
+    if ok and size ~= nil then return tonumber(size) or 0 end
+    ok, size = pcall(function() return container:get_size() end)
+    if ok and size ~= nil then return tonumber(size) or 0 end
+    return 0
+end
 
 local function object_position(game_object)
     local transform = safe_call(game_object, "get_Transform")
@@ -267,6 +303,7 @@ local function get_motion_tree()
     )
     local layer = safe_call(motion_fsm, "getLayer", 0)
     if layer == nil then return nil end
+    runtime.motion_fsm_layer = layer
     local ok, tree = pcall(function() return layer:get_tree_object() end)
     if ok then return tree end
     return nil
@@ -309,12 +346,25 @@ local function reset_tree_state(tree)
     iai_conditions = {}
     scan_index = 0
     scan_complete = false
+    runtime.kamui_scan_ready = false
+    runtime.kamui_entry_ready = false
+    runtime.kamui_success_ready = false
+    runtime.kamui_active = false
+    runtime.kamui_node_id = 0
+    runtime.kamui_action_type = "未探测"
+    runtime.kamui_action_mode = "未读取"
     runtime.foresight_counter_object = nil
     runtime.foresight_counter_original_end = nil
     runtime.foresight_counter_value = FORESIGHT_BASE_COUNTER_END
     runtime.foresight_counter_ready = false
     runtime.foresight_window_extended = false
     runtime.transition_probe_done = false
+    runtime.kamui_probe_done = false
+    runtime.kamui_pre_requested = false
+    runtime.kamui_request_attempts = 0
+    runtime.kamui_request_source = "无"
+    runtime.kamui_request_motion = -1
+    runtime.kamui_request_node = 0
 end
 
 local function refresh_player()
@@ -337,6 +387,12 @@ local function refresh_player()
             "getComponent(System.Type)",
             sdk.typeof("via.behaviortree.BehaviorTree")
         )
+        local motion_fsm = safe_call(
+            runtime.game_object,
+            "getComponent(System.Type)",
+            sdk.typeof("via.motion.MotionFsm2")
+        )
+        runtime.motion_fsm_layer = safe_call(motion_fsm, "getLayer", 0)
     end
 
     if runtime.motion_control ~= nil then
@@ -351,8 +407,8 @@ local function refresh_player()
         if node ~= nil then runtime.node_id = tostring(node) end
     end
 
-    local motion_layer = safe_call(runtime.master_player, "getMotionLayer", 0)
-    runtime.motion_frame = safe_call(motion_layer, "get_Frame") or 0.0
+    runtime.motion_layer = safe_call(runtime.master_player, "getMotionLayer", 0)
+    runtime.motion_frame = safe_call(runtime.motion_layer, "get_Frame") or 0.0
 
     local tree = get_motion_tree()
     if tree ~= nil and tostring(tree) ~= runtime.motion_tree_key then
@@ -379,6 +435,26 @@ local function get_action_object(index)
     end)
     if ok then return result end
     return nil
+end
+
+local function refresh_kamui_state()
+    -- 这里故意不扫描运行时 Action/Node。旧方案依赖 IaiCounter 类型名，
+    -- 但游戏运行时对象常为空或使用静态动作索引，导致“未探测到”。
+    runtime.kamui_scan_ready = runtime.weapon_type == WEAPON_LONG_SWORD and runtime.motion_tree ~= nil
+    runtime.kamui_entry_ready = false
+    runtime.kamui_success_ready = false
+    if runtime.motion_tree ~= nil then
+        pcall(function()
+            runtime.kamui_entry_ready = runtime.motion_tree:get_node_by_id(NODE_KAMUI_IAI_ENTRY) ~= nil
+            runtime.kamui_success_ready = runtime.motion_tree:get_node_by_id(NODE_KAMUI_SUCCESS) ~= nil
+        end)
+    end
+    runtime.kamui_active = runtime.bank_id == 100 and runtime.motion_id == KAMUI_Iai_MOTION
+    runtime.kamui_node_id = tonumber(runtime.node_id) or 0
+    runtime.kamui_action_type = runtime.kamui_active
+        and "Motion 161：神威居合准备" or "当前动作不是 Motion 161"
+    runtime.kamui_action_mode = runtime.kamui_active
+        and "静态 FSM 动作表" or "未进入神威居合"
 end
 
 local function apply_foresight_counter_window()
@@ -639,6 +715,83 @@ local function jump_to_node(node_id)
     return explicit_ok
 end
 
+local function jump_to_kamui_success(prefer_fsm)
+    -- The confirmed automatic Iai path uses BehaviorTree:setCurrentNode.  A
+    -- Kamui success node belongs to that same behavior tree; calling only the
+    -- MotionFsm2 layer can return from pcall while leaving Motion 161 active.
+    -- Try the proven behavior-tree overload first, then the editor's FSM-layer
+    -- overload for builds where the node is exposed only through MotionFsm2.
+    local behavior_ok = false
+    local fsm_ok = false
+    local source_parts = {}
+
+    local function try_behavior_tree(label)
+        if runtime.behavior_tree == nil then return false end
+        local ok = pcall(function()
+            runtime.behavior_tree:call("setCurrentNode", NODE_KAMUI_SUCCESS, nil, nil)
+        end)
+        if ok then
+            source_parts[#source_parts + 1] = label or "BehaviorTree:setCurrentNode"
+            return true
+        end
+        ok = pcall(function()
+            runtime.behavior_tree:call(
+                "setCurrentNode(System.UInt64, System.UInt32, via.behaviortree.SetNodeInfo)",
+                NODE_KAMUI_SUCCESS,
+                nil,
+                nil
+            )
+        end)
+        if ok then source_parts[#source_parts + 1] = "BehaviorTree:setCurrentNode(显式签名)" end
+        return ok
+    end
+
+    local function try_motion_fsm()
+        if runtime.motion_fsm_layer == nil then return false end
+        local ok = pcall(function()
+            runtime.motion_fsm_layer:call(
+                "setCurrentNode(System.UInt64, via.behaviortree.SetNodeInfo, via.motion.SetMotionTransitionInfo)",
+                NODE_KAMUI_SUCCESS,
+                nil,
+                nil
+            )
+        end)
+        if ok then source_parts[#source_parts + 1] = "MotionFsm2Layer:setCurrentNode" end
+        return ok
+    end
+
+    if prefer_fsm then
+        fsm_ok = try_motion_fsm()
+        behavior_ok = try_behavior_tree("BehaviorTree:setCurrentNode(重试)")
+    else
+        -- Submit both layers on the first request.  Either layer may report a
+        -- successful call without consuming the transition, so the following
+        -- frame remains the source of truth.
+        behavior_ok = try_behavior_tree(nil)
+        fsm_ok = try_motion_fsm()
+    end
+
+    local ok = behavior_ok or fsm_ok
+    local source = #source_parts > 0 and table.concat(source_parts, " + ") or "无"
+
+    runtime.last_request_node = NODE_KAMUI_SUCCESS
+    runtime.last_request_result = ok
+    runtime.kamui_request_source = source
+    runtime.kamui_request_motion = runtime.motion_id
+    runtime.kamui_request_node = tonumber(runtime.node_id) or 0
+    return ok
+end
+
+local function arm_kamui_verification(is_retry)
+    runtime.pending_kamui = 3
+    runtime.pending_kamui_age = 0
+    if is_retry then
+        runtime.kamui_request_attempts = runtime.kamui_request_attempts + 1
+    else
+        runtime.kamui_request_attempts = 1
+    end
+end
+
 local function valid_enemy_attack(owner_type, attack_type, attack_object)
     if owner_type ~= 1 then return false end
     if not config.multiplayer_compat then return true end
@@ -664,6 +817,15 @@ local function eligible_auto_iai()
     if runtime.motion_id == 152 then return true end
     if runtime.motion_id == 156 then return runtime.motion_frame >= 38.0 end
     return false
+end
+
+local function eligible_auto_kamui_iai(cached_bank, cached_motion)
+    -- 神威居合使用同一套特殊纳刀 Motion，但只有当前节点链含有
+    -- IaiCounter 动作时才接管，普通居合不会被这个开关影响。
+    if runtime.kamui_active and eligible_auto_iai() then return true end
+    -- DamageSide can run after the motion has already advanced to Motion 1;
+    -- the cached motion is the action that was active at the hit instant.
+    return cached_bank == 100 and cached_motion == KAMUI_Iai_MOTION
 end
 
 local function refresh_multiplayer()
@@ -715,7 +877,49 @@ end
 re.on_frame(function()
     if not refresh_player() then return end
 
+    refresh_kamui_state()
+
     if runtime.cooldown > 0 then runtime.cooldown = runtime.cooldown - 1 end
+    if runtime.pending_kamui > 0 then
+        runtime.pending_kamui = runtime.pending_kamui - 1
+        runtime.pending_kamui_age = runtime.pending_kamui_age + 1
+        if runtime.motion_id == KAMUI_SUCCESS_MOTION then
+            -- This is the only point at which an automatic Kamui success is
+            -- considered real.  The damage hook may have accepted a request,
+            -- but a successful pcall alone does not advance the FSM.
+            runtime.last_trigger = "auto kamui iai"
+            runtime.last_request_result = true
+            runtime.pending_kamui = 0
+            runtime.pending_kamui_age = 0
+            runtime.cooldown = 8
+        elseif runtime.motion_id ~= KAMUI_Iai_MOTION then
+            runtime.pending_kamui = 0
+            runtime.pending_kamui_age = 0
+            runtime.last_request_result = false
+            runtime.last_reject_reason = "请求后动作离开 Motion 161，未进入 Motion 162"
+        elseif runtime.pending_kamui_age >= 2 and runtime.pending_kamui > 0
+            and runtime.kamui_request_attempts < 2 then
+            -- One bounded retry covers the case where DamageSide runs just
+            -- before the motion layer has consumed the transition request.
+            runtime.kamui_request_attempts = runtime.kamui_request_attempts + 1
+            if jump_to_kamui_success(true) then
+                runtime.last_request = "自动神威居合重试"
+                runtime.pending_kamui = 3
+                runtime.pending_kamui_age = 0
+            else
+                runtime.pending_kamui = 0
+                runtime.pending_kamui_age = 0
+                runtime.last_request_result = false
+                runtime.last_reject_reason = "神威成功节点请求失败"
+            end
+        elseif runtime.pending_kamui_age >= 3 then
+            runtime.pending_kamui = 0
+            runtime.pending_kamui_age = 0
+            runtime.last_request_result = false
+            runtime.last_reject_reason = "请求未被 FSM 接受，仍停留在 Motion 161"
+        end
+        if runtime.pending_kamui == 0 then runtime.pending_kamui_age = 0 end
+    end
     if runtime.pending_foresight > 0 then
         runtime.pending_foresight = runtime.pending_foresight - 1
         runtime.pending_foresight_age = runtime.pending_foresight_age + 1
@@ -753,7 +957,7 @@ re.on_frame(function()
     end
 end)
 
-local damage_context = nil
+    local damage_context = nil
 local quest_type = sdk.find_type_definition("snow.player.PlayerQuestBase")
 local damage_method = quest_type and quest_type:get_method("checkCalcDamage_DamageSide") or nil
 
@@ -826,6 +1030,9 @@ if damage_method ~= nil then
                     and runtime.motion_id == 155
                     and runtime.motion_frame > IAI_BASE_COUNTER_END
                     and runtime.motion_frame <= IAI_BASE_COUNTER_END + config.iai_post_frames,
+                auto_kamui_iai = config.auto_kamui_iai
+                    and runtime.motion_fsm_layer ~= nil
+                    and eligible_auto_kamui_iai(cached_bank, cached_motion),
                 manual_foresight = config.manual_foresight_extension
                     and foresight_hit_frame ~= nil
                     and runtime.foresight_window_extended
@@ -835,6 +1042,20 @@ if damage_method ~= nil then
                 auto_foresight = config.auto_foresight
                     and (runtime.foresight_legal or runtime.foresight_legal_grace > 0),
             }
+
+            -- Kamui's success Action must be active before DamageSide runs;
+            -- otherwise the original damage calculation can finish while the
+            -- player is still on Motion 161. The post hook only records the
+            -- result and applies a short retry when the FSM overwrites it.
+            damage_context.kamui_pre_requested = false
+            if damage_context.can_face and damage_context.auto_kamui_iai
+                and runtime.cooldown <= 0 then
+                damage_context.kamui_pre_requested = jump_to_kamui_success()
+                if damage_context.kamui_pre_requested then
+                    runtime.last_request = "自动神威居合"
+                    arm_kamui_verification(false)
+                end
+            end
         end,
         function(retval)
             if damage_context == nil then return retval end
@@ -847,9 +1068,38 @@ if damage_method ~= nil then
             if flow == 2 then
                 if context.manual_iai then runtime.last_trigger = "manual iai extended window" end
                 if context.manual_foresight then runtime.last_trigger = "manual foresight extended window" end
+                if context.can_face and context.auto_kamui_iai
+                    and context.kamui_pre_requested then
+                    runtime.last_request = "自动神威居合"
+                    runtime.cooldown = 15
+                    -- A pre-request was sent before the damage calculation.
+                    -- Keep the original action result but suppress this hit,
+                    -- matching the legacy automatic Iai hook.
+                    return sdk.to_ptr(1)
+                end
+                if context.can_face and context.auto_kamui_iai and runtime.cooldown <= 0
+                    and jump_to_kamui_success() then
+                    runtime.last_request = "自动神威居合"
+                    arm_kamui_verification(false)
+                    runtime.cooldown = 15
+                    return sdk.to_ptr(1)
+                end
                 return retval
             end
             if (flow ~= 0 and flow ~= 2) or runtime.cooldown > 0 then return retval end
+
+            if context.can_face and context.auto_kamui_iai and context.kamui_pre_requested then
+                runtime.last_request = "自动神威居合"
+                runtime.cooldown = 15
+                return sdk.to_ptr(1)
+            end
+
+            if context.can_face and context.auto_kamui_iai and jump_to_kamui_success() then
+                runtime.last_request = "自动神威居合"
+                arm_kamui_verification(false)
+                runtime.cooldown = 15
+                return sdk.to_ptr(1)
+            end
 
             if context.can_face and context.auto_iai and jump_to_node(NODE_AUTO_IAI_ENTRY) then
                 runtime.last_trigger = "auto iai"
@@ -910,6 +1160,7 @@ local function trigger_text(value)
     local names = {
         ["none"] = "无",
         ["auto iai"] = "自动居合",
+        ["auto kamui iai"] = "自动神威居合",
         ["auto foresight"] = "自动见切",
         ["manual iai grace"] = "手动居合延长判定",
         ["manual foresight grace"] = "手动见切延长判定",
@@ -924,6 +1175,7 @@ re.on_draw_ui(function()
 
     checkbox("启用 Mod", "enabled")
     checkbox("自动居合", "auto_iai")
+    checkbox("自动神威居合", "auto_kamui_iai")
     checkbox("自动见切", "auto_foresight")
     checkbox("延长手动居合判定", "manual_iai_extension")
     checkbox("延长手动见切判定", "manual_foresight_extension")
@@ -957,6 +1209,20 @@ re.on_draw_ui(function()
         imgui.text("动作帧：" .. string.format("%.2f", runtime.motion_frame))
         imgui.text("核心节点就绪：" .. (runtime.nodes_ready and "是" or "否"))
         imgui.text("自动居合节点就绪：" .. (runtime.iai_entry_ready and "是" or "否"))
+        imgui.text("神威动作表：" .. (runtime.kamui_scan_ready and "已加载" or "未加载"))
+        imgui.text("神威入口节点：" .. (runtime.kamui_entry_ready and "已找到" or "未找到"))
+        imgui.text("神威成功节点：" .. (runtime.kamui_success_ready and "已找到" or "未找到"))
+        imgui.text("当前动作处于神威链：" .. (runtime.kamui_active and "是" or "否"))
+        imgui.text("神威链节点：" .. tostring(runtime.kamui_node_id))
+        imgui.text("神威入口节点 ID：" .. tostring(NODE_KAMUI_IAI_ENTRY))
+        imgui.text("神威成功节点 ID：" .. tostring(NODE_KAMUI_SUCCESS))
+        imgui.text("神威动作类型：" .. tostring(runtime.kamui_action_type))
+        imgui.text("神威模式字段：" .. tostring(runtime.kamui_action_mode))
+        imgui.text("神威请求路径：" .. tostring(runtime.kamui_request_source))
+        imgui.text("神威请求前动作/节点：" .. tostring(runtime.kamui_request_motion)
+            .. " / " .. tostring(runtime.kamui_request_node))
+        imgui.text("神威验证状态：" .. (runtime.pending_kamui > 0
+            and "等待 Motion 162" or (runtime.last_trigger == "auto kamui iai" and "已进入 Motion 162" or "未确认")))
         imgui.text("当前动作允许见切：" .. (runtime.foresight_legal and "是" or "否"))
         imgui.text("见切成功判定动作就绪：" .. (runtime.foresight_counter_ready and "是" or "否"))
         imgui.text("见切成功判定结束帧：" .. string.format("%.2f", runtime.foresight_counter_value))

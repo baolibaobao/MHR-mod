@@ -400,6 +400,217 @@ OwnerType == 1
 6. 多人任务测试怪物攻击、队友攻击和 `AttackObject` 为空的同步事件；确认联机兼容只过滤来源，不屏蔽手动判定。
 7. 退出游戏后再分析 JSON/日志，不在游戏运行时反复切换大规模探针；发现异常先回滚备份。
 
+### 10.8 神威居合：固定动作表优先于运行时扫描（2026-09-05）
+
+神威居合初版曾尝试扫描运行时 Motion FSM 的 Action 类型（`IaiCounter`、
+`SetIaiData` 等）来判断当前模式。这条路线在实际游戏中显示“未探测到”，
+原因是运行时对象可能使用静态 Action 索引、节点对象为空，且神威和普通居合
+共享部分行为树入口；类型扫描结果不能作为功能触发条件。扫描还会增加逐帧遍历
+节点的开销。
+
+已从当前游戏的覆盖包 `re_chunk_000.pak.patch_001.pak` 重新提取：
+
+```text
+资源/natives/STM/player/Fsm/LongSword/LongSword.motfsm2.43
+MHR-mod-repository/analysis/raw/natives/STM/player/Fsm/LongSword/LongSword.motfsm2.43
+大小：2,167,548 字节
+SHA-256：A47DDA25415B4BBA349B36D39CB807428EDD6E32DFA33DB81A15D96CC7ABE048
+```
+
+同时保存了动作编号对应的原始动作资源：
+
+```text
+analysis/raw/natives/STM/player/mot/plw_LongSword_100.motlist.528
+大小：3,796,256 字节
+SHA-256：2F117D2539EDD873C4FDFC75CD3A01AB49887AC08934E900F7964F64A255A38D
+
+analysis/raw/natives/STM/player/mot/plw_LongSword_bank.motbank.3
+大小：3,076 字节
+SHA-256：7446B732D55030CDCCF10424E31040A84CD1B3BC04802C751D22266EDC7C51C9
+```
+
+训练场运行时已确认神威动作表：`Motion 161` 是神威居合准备/纳刀，`162` 是
+神威居合化解，`163` 是蓄力完成，`164` 是蓄力完成后一段时间，`170` 是气刃
+解放斩。截图中 `Bank 100 / Motion 161` 的当前节点为运行时生成的节点 ID，
+不作为固定入口。当前实现固定使用 Motion `161` 作为神威居合识别条件，并继续
+调用原版居合入口，让游戏保留当前居合模式；不再扫描 IaiCounter 类型，也不把
+扫描成功与否当作触发前提。
+
+第一次手动成功采集重新确认了瞬时过渡：`Motion 161`、帧约 `54.00`、节点
+`2874088718`，下一采样帧进入 `Motion 162`、帧约 `1.50`、节点
+`2605267967`。此前截图中出现的 `3569005589` 是动作继续运行后的其它节点，
+不能把它直接当作 `161 -> 162` 的成功入口。自动神威的目标必须以这组前后帧和
+对应的 Transition/Condition 为准，不能只凭动作结束时的 NodeID 猜测。
+
+神威受击的 `DamageSide` 返回值可能为 `2`，自动入口同时覆盖 `0` 和 `2` 两条
+流程，手动延长仍保持原返回值。当前自动脚本里的成功节点请求属于待回溯项，
+在完成 Transition 采集前不把 `3569005589` 固定为正式入口。
+
+维护注意：版本更新后先从实际生效的主包和 patch 包提取 Long Sword FSM，
+用动作 ID 显示工具确认神威纳刀 Motion，再更新静态动作表。只有在静态资源无法
+确认时才增加一次性诊断，不应恢复逐帧全树扫描作为正式逻辑。
+
+拆包工具注意：本次验证使用工作区 `_scratch/pak_extract/PakExtract.exe` 的纯
+命令行流程直接读取 PAK 和 Zstandard 数据，不需要启动 010 Editor。若出现带有
+“The Setup program accepts optional command line parameters”的窗口，说明误启动了
+010 Editor 安装程序，不是 PAK 或 Lua 错误；关闭该窗口即可，不能把安装程序当作
+拆包器调用。
+
+### 010 Editor Setup 弹窗的明确处理规则（2026-09-05）
+
+本次再次出现的窗口来自：
+
+```text
+F:\ruanjian\guailiemod\010editor\010editor\010 Editor v10.0 x64.exe
+```
+
+这个文件是 010 Editor 的安装程序，不是已经安装好的编辑器命令行工具。对它
+传入 `/?`、`/HELP` 或其它拆包参数时，安装程序只会显示 `The Setup program accepts
+optional command line parameters` 帮助页，因此截图中的标题是 `Setup`。
+
+处理方式：
+
+1. 关闭 Setup 窗口即可，不要用它打开 PAK，也不需要为了这个弹窗手动安装。
+2. PAK 提取统一使用工作区的 `_scratch/pak_extract/PakExtract.exe`，或使用
+   `工具/MonsterHunterRiseModding/files/REtool.exe -h mhrisePC.list -x`。
+3. 010 Editor 只作为图形化查看/运行 `RE_RSZ.bt` 模板的工具；确认实际安装路径
+   后再启动主程序，不能把安装包文件名当成主程序调用。
+4. 后续脚本、文档和自动化命令中禁止对上述 Setup 文件执行帮助参数；运行前先检查
+   进程窗口标题是否为 `Setup`，若是则立即关闭并回到命令行拆包流程。
+
+该弹窗与 REFramework、`LongSwordAssist.lua`、游戏闪退和神威居合动作逻辑无关，
+不会改变游戏文件或采集 JSON。
+
+### 10.8.1 神威居合入口定位：本次误判原因与正确流程（2026-09-05）
+
+#### 本次误判的根因
+
+1. **把动作结束状态当成入口。** 静态资源和 BHVT 会同时展示准备、化解、蓄力和
+   后续攻击节点。只看成功动作停留时的截图，会把后续 Node 当成 `161 -> 162`
+   的入口；本次前后帧采集证明瞬时目标是 `2605267967`，不是此前选用的
+   `3569005589`。
+2. **混用了四种 ID。** Motion `161/162` 是动作号，`2874088718`、
+   `2605267967`、`3569005589` 是 NodeID，`tree:get_nodes()[index]` 的位置又是
+   NodeIndex，Action 还有独立的全局索引。四者放在同一张“动作表”里会得到
+   “节点调用成功但动作不变”的假阳性。
+3. **只跳 Node，没有执行原版过渡。** `BehaviorTree:setCurrentNode` 可以让诊断
+   读数换成目标节点，但神威化解依赖当前动作、伤害反射条件和 Transition Event
+   一起执行。直接请求成功 Node 会绕过这些条件，所以角色可能仍停在 Motion 161。
+   另外，`master_player:getMotionLayer(0)` 与 `MotionFsm2:getLayer(0)` 不是同一个
+   调用层：前者适合读取玩家动作帧，后者才持有 `motfsm2` Tree，并支持 BHVT 编辑器
+   使用的 `setCurrentNode(System.UInt64, via.behaviortree.SetNodeInfo,
+   via.motion.SetMotionTransitionInfo)`。把完整过渡签名调用在前者上，即使 `pcall`
+   返回成功，也可能只更新请求状态而不执行动作。
+4. **第一次采集使用了错误的对象调用层。** Motion FSM 的 Node/NodeData 是原生
+   wrapper，不能按 managed object 的 `object:call(...)` 方式读取。第一次探针因而
+   得到 Node 类型字符串而没有 `Action/Condition/Transition` 数组；这会造成“拆包
+   没找到”的假象。原生对象应直接调用 `node:get_data()`、
+   `data:get_actions()`、`data:get_transition_events()`。
+5. **静态图不能单独告诉我们运行时选中了哪条边。** `motfsm2` 记录的是完整图，
+   运行时还会受当前动作帧、DamageReflex 实例、伤害流程返回值和网络事件影响。只
+   扫描固定 Node 或只看 `getCurrentNodeID`，都不足以确定真实成功分支。
+
+#### 后续武器动作的正确定位流程
+
+```text
+有效 PAK/补丁层
+  -> 离线提取 motfsm2/motlist/motbank
+  -> 010/RE_RSZ 展开 Node11.childnodes
+  -> 记录 NodeIndex、NodeID、父子关系
+  -> 读取每个候选 Node 的 Action/State/Condition/Transition Event
+  -> 游戏内关闭自动功能，采集成功前后至少 2-3 帧
+  -> 用 Motion + NodeID + 当前帧匹配静态节点和 Transition
+  -> 确认成功条件后，再复用原版状态链实现自动功能
+```
+
+具体要求：
+
+- 静态分析阶段先定位动作资源和候选图，不把 `MotionID` 当 NodeID，也不把
+  NodeIndex 当 ActionID；每条边同时保存 `mStates`、`mTransitions`、Condition
+  索引、Transition Event 索引和 Action 槽位。
+- 运行时采集要记录 `Bank/Motion/Frame`、行为树当前 Node、Motion Layer Tree
+  当前 Node、上一帧状态、DamageSide 返回值、DamageReflex 对象和攻击来源。成功
+  入口以“上一帧 -> 当前帧”的变化确认，不能以最终停留节点确认。
+- 如果 Node 是原生 wrapper，使用直接方法读取；managed 对象才使用
+  `object:call`/`get_field`。探针必须把调用失败单独写入 JSON，不能用 `nil` 代替
+  “没有 Action”。
+- 实现阶段优先让原版 Condition/Transition 自己完成成功分支；脚本只选择合法的
+  入口或修改判定窗口。需要跳转时必须使用 `MotionFsm2:getLayer(0)` 返回的 FSM
+  Layer 和完整过渡签名，并在下一帧验证 Motion 是否真的变化；“调用返回成功”不
+  等于动作执行成功。`getMotionLayer(0)` 只用于读帧，不能替代 FSM Layer。
+- 自动神威请求不能仅凭 `pcall` 成功就把 `DamageSide` 返回值强制改成无伤。若 FSM
+  没有接受目标 Node，这会出现“仍停在 Motion 161、但攻击不扣血”的假成功。请求后
+  应等待下一帧确认 Motion 162；未确认时透传原始伤害流程，并只安排有限次数重试。
+- 版本适配时只做一次性的定向采集：先读已知动作附近的节点，再按父子边回溯；正式
+  逻辑不恢复逐帧全树扫描。这样可以同时避免漏掉动态节点和造成卡顿/闪退。
+
+#### 本次采集的有效证据
+
+```text
+前状态：Bank 100 / Motion 161 / Frame 54.00 / Node 2874088718
+后状态：Bank 100 / Motion 162 / Frame 1.50  / Node 2605267967
+```
+
+第二次采集还展开了两个关键 Node 的动作内容：
+
+| NodeID | 名称/用途 | 关键 Action | State/Condition |
+| ---: | --- | --- | --- |
+| `2874088718` | `Motion 161` 神威准备节点 | `9548`：`PlayerFsm2ActionMotionSpdSkillWeaponOffIaiCounter` | 叶节点，无成功动作 |
+| `2605267967` | `Motion 162` 手动成功节点 | `9461`：`PlayerFsm2ActionLongSwordSuccessIaiCounter`，同节点还包含 `9460`：`PlayerFsm2ActionSeeThroughAttack` | States `236/4335`；Conditions `1073744384/7082` |
+
+`2605267967` 的完整 Action 序列为 `9457-9466`，其中 `9461` 才是神威成功
+Action；`3569005589` 的 `9513` 也属于同类型成功 Action，但它对应的是后续
+“カウンター成功”分支。后续实现应以手动成功瞬时边 `2874088718 -> 2605267967`
+为入口证据，再回溯其父节点和 Condition，而不是从多个包含同名成功 Action 的
+节点中任选一个。
+
+### 10.8.2 自动神威“最近触发但仍受击”修复（2026-09-06）
+
+此前自动神威在 DamageSide 中只要 `setCurrentNode` 的 `pcall` 返回成功，就
+立即显示“最近触发”。这只能证明 Lua 调用了接口，不能证明 FSM 接受了
+`161 -> 162`；因此会出现界面显示触发、角色仍停在 Motion 161、伤害照常命中的
+假成功。
+
+当前本地版本改为：
+
+1. 首次请求同时提交已验证的 `BehaviorTree:setCurrentNode` 和
+   `MotionFsm2Layer:setCurrentNode(...SetMotionTransitionInfo)` 两条原版路径。
+2. DamageSide 返回时只在请求已提交的情况下沿用自动居合的无伤返回值；不再把
+   请求调用本身写成成功事件。
+3. 后续 3 帧检查动作是否真正进入 Motion 162；只有确认后才更新“最近触发”。
+4. 若仍停在 Motion 161，最多切换路径重试一次，随后显示“未确认”和拒绝原因，
+   避免无限重试及误报。
+5. 诊断界面记录请求路径、请求前动作/节点和验证状态，便于区分接口返回、动作
+   过渡和伤害流程三个阶段。
+
+采集脚本同时改为启动时加载并保留已有 `LongSwordKamui_capture.json`，不再无条件
+用空对象覆盖历史采集；静态 Condition 解析优先调用 `tree:get_condition(index)`，
+并对带 Static 标记的索引回退到静态条件表。
+
+这组数据只确认了真实动作过渡的两端，尚未替代完整的 Condition/Transition
+记录；后续自动神威实现必须以补全后的采集 JSON 为依据。第一次探针 JSON 的
+Node 详情为空应归类为“原生对象读取方式错误”，而不是“FSM 中没有该节点”。
+
+### 10.8.3 自动神威成功回归记录（2026-09-06）
+
+用户已确认当前版本自动神威居合成功，角色能从 Motion 161 正常进入神威居合
+化解 Motion 162。成功原因不是更换了动作或伪造伤害，而是修正了请求层和验证时序：
+
+- 入口使用手动成功采集确认的 `NodeID 2605267967`，对应 Motion 162 中的
+  `PlayerFsm2ActionLongSwordSuccessIaiCounter`，不再使用后续分支
+  `3569005589`。
+- 受击前同时提交 BehaviorTree 的通用 `setCurrentNode` 和 MotionFsm2Layer 的
+  `SetMotionTransitionInfo` 过渡请求，覆盖了两层对象在不同运行时版本中的暴露差异。
+- 伤害 Hook 在原版 DamageSide 流程内提交请求，并沿用自动居合的无伤返回，避免
+  伤害结算先于动作切换完成。
+- 请求后连续检查动作状态，只有实际看到 Motion 162 才更新“最近触发”；接口
+  `pcall` 返回成功但动作未切换时会进入一次有限重试，不再产生假成功提示。
+- 采集脚本改为保留历史 JSON，后续分析可以继续使用有效的 Motion 161 -> 162
+  前后帧证据，不会因启动脚本而被空结果覆盖。
+
+本次回归结论：神威自动化的关键是“正确的成功 Node + 正确的 FSM 请求层 +
+动作切换后的确认”，三者缺一都会出现“显示触发但仍受击”或进入普通居合的现象。
+
 ## 11. 弓箭开发记录（2026-09-03）
 
 本节记录弓箭 `BowAssist.lua` 当前版本的实现和已完成采集。弓箭与太刀是两个独立 Lua Mod；弓箭动作表、NodeIndex 和成功窗口不能直接套用太刀的数字。
@@ -431,6 +642,23 @@ OwnerType == 1
 自动 GP 走 `snow.player.PlayerQuestBase.checkCalcDamage_DamageSide`：确认接收者为主玩家、武器类型为 `13`、原版伤害流程仍为可接管状态，并通过 `BehaviorTree:setCurrentNode(...)` 进入原版闪身箭斩节点。pending 计时只用来确认是否进入 `452/456`，不会把确认事件当作第二次动作请求。
 
 手动延长不依赖自动入口，也不依赖 `checkDamageReflexNoDamageHitEnable(...)` 必须被调用。后者在当前弓路径中可以保持 `0` 次；实际受击应以 DamageSide 的伤害事件、攻击来源和返回值为准。
+
+### 11.4.1 最终自动 GP 根因：同一攻击链的二次结算（2026-09-06）
+
+最终回归确认自动 GP 已生效，并且不会在闪身箭斩动作中再次发动。关键修复不是
+继续扩大周期锁，而是处理同一次怪物命中在相邻帧进入两次
+`checkCalcDamage_DamageSide` 的情况：
+
+- 第一次回调处于 `Bank 100 / Motion 107`，提交一次原版闪身箭斩入口，原始伤害
+  流程为 `0`，随后节点切换到运行时生成的入口节点。
+- 第二次回调仍来自同一攻击链，动作确认 `Motion 452/456` 尚未出现；旧逻辑会
+  放行这次回调，角色随后进入 `Bank 1 / Motion 15/16` 受击动作。
+- `Motion 452/456` 是动作真正进入后的确认值，不能用请求接口 `pcall` 成功代替。
+
+当前实现增加 `AUTO_CHAIN_PROTECT_FRAMES = 3`：首次回调提交入口后，保护窗口内的
+重复回调只拦截同一攻击链，不重新提交动作；只有看到 `452/456` 后才启动周期锁。
+这解释了此前“最近触发显示成功但实际被击中”和“周期锁拒绝原因反复出现”的组合
+现象，也确定了后续维护要区分：入口等待、同链保护、动作确认、动作周期锁四种状态。
 
 ### 11.5 采集结果和诊断解释
 

@@ -2,379 +2,261 @@
     "config": {
         "auto_detect_multiplayer": true,
         "auto_dodgebolt": false,
-        "auto_gp": false,
+        "auto_gp": true,
+        "auto_gp_capture": false,
         "diagnostics": true,
-        "dodgebolt_post_frames": 12,
+        "dodgebolt_post_frames": 60,
         "enabled": true,
         "manual_dodgebolt_extension": false,
         "multiplayer_compat": true
     },
     "events": [
         {
-            "bank_id": 100,
-            "clock": 202.82,
-            "kind": "标记",
-            "marker": "GP 成功",
-            "motion_frame": 71.00018310546875,
-            "motion_id": 456,
-            "node_id": "1712018032",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 202.903,
+            "bank_id": 0,
+            "clock": 110.219,
             "kind": "动作变化",
-            "motion_frame": 76.00018310546875,
-            "motion_id": 456,
-            "node_id": "817395184",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 202.92,
-            "kind": "动作变化",
-            "motion_frame": 77.00018310546875,
-            "motion_id": 456,
-            "node_id": "2263904220",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 203.137,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 62,
-            "node_id": "2324425079",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 203.619,
-            "kind": "动作变化",
-            "motion_frame": 5.91278076171875e-05,
-            "motion_id": 33,
-            "node_id": "2451015056",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 205.92,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 11,
-            "node_id": "1934961359",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 205.97,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 205,
-            "node_id": "1704832922",
-            "weapon_type": 13
-        },
-        {
-            "attack_object_type": "via.GameObject",
-            "bank_id": 100,
-            "clock": 205.985,
-            "kind": "受击",
-            "motion_frame": 2.0000040531158447,
-            "motion_id": 205,
-            "node_id": "1704832922",
-            "owner_type": 1,
-            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
-            "source": "em131_00",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 207.436,
-            "kind": "动作变化",
-            "motion_frame": 0.00018310546875,
-            "motion_id": 33,
-            "node_id": "2451015056",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 207.82,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 37,
-            "node_id": "3738870336",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 208.236,
-            "kind": "动作变化",
-            "motion_frame": 5.14984130859375e-05,
+            "motion_frame": 2.207508087158203,
             "motion_id": 1,
-            "node_id": "1564395738",
+            "node_id": "4143981713",
             "weapon_type": 13
         },
         {
-            "bank_id": 100,
-            "clock": 210.003,
-            "kind": "标记",
-            "marker": "GP 过早",
-            "motion_frame": 106.00041198730469,
-            "motion_id": 1,
-            "node_id": "1564395738",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 210.27,
+            "bank_id": 50,
+            "clock": 128.272,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
-            "motion_id": 62,
-            "node_id": "2324425079",
+            "motion_id": 1,
+            "node_id": "410069252",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 128.756,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 99,
+            "node_id": "2070196525",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 129.354,
+            "kind": "动作变化",
+            "motion_frame": 0.0005035400390625,
+            "motion_id": 83,
+            "node_id": "1640350970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 129.487,
+            "kind": "动作变化",
+            "motion_frame": 8.000519752502441,
+            "motion_id": 83,
+            "node_id": "2445269050",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 129.57,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1986721532",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 130.17,
+            "kind": "动作变化",
+            "motion_frame": 8.392333984375e-05,
+            "motion_id": 83,
+            "node_id": "1693613244",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 130.486,
+            "kind": "动作变化",
+            "motion_frame": 19.0001220703125,
+            "motion_id": 83,
+            "node_id": "1220499058",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 130.52,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 98,
+            "node_id": "2704977906",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 131.07,
+            "kind": "动作变化",
+            "motion_frame": 7.2479248046875e-05,
+            "motion_id": 80,
+            "node_id": "2704977910",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 131.203,
+            "kind": "动作变化",
+            "motion_frame": 8.000088691711426,
+            "motion_id": 80,
+            "node_id": "2704977907",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 131.336,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1986721532",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 131.937,
+            "kind": "动作变化",
+            "motion_frame": 8.392333984375e-05,
+            "motion_id": 83,
+            "node_id": "1693613244",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 132.253,
+            "kind": "动作变化",
+            "motion_frame": 19.000452041625977,
+            "motion_id": 83,
+            "node_id": "1220499058",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 210.42,
+            "clock": 132.456,
             "kind": "动作变化",
-            "motion_frame": 10.000020027160645,
-            "motion_id": 62,
-            "node_id": "2324425075",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 150,
+            "node_id": "3360746832",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 210.437,
+            "clock": 132.539,
             "kind": "动作变化",
-            "motion_frame": 11.000021934509277,
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 152,
+            "node_id": "2958821540",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 132.57,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 77,
+            "node_id": "934362218",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 132.786,
+            "kind": "动作变化",
+            "motion_frame": 2.765655517578125e-05,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 133.136,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 8,
+            "node_id": "1879205189",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 133.287,
+            "kind": "动作变化",
+            "motion_frame": 2.002716064453125e-05,
+            "motion_id": 6,
+            "node_id": "3639862651",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 133.421,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
             "motion_id": 62,
             "node_id": "2324425078",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 210.753,
-            "kind": "动作变化",
-            "motion_frame": 5.91278076171875e-05,
-            "motion_id": 33,
-            "node_id": "2451015056",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 210.77,
+            "clock": 133.62,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
-            "motion_id": 10,
-            "node_id": "4102615523",
+            "motion_id": 100,
+            "node_id": "3885737708",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 211.053,
+            "clock": 133.97,
             "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 50,
-            "node_id": "2077678327",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 211.237,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 11,
-            "node_id": "1934961359",
+            "motion_frame": 22.000043869018555,
+            "motion_id": 100,
+            "node_id": "400001054",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 212.137,
+            "clock": 134.103,
             "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 49,
-            "node_id": "246235333",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 212.287,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 11,
-            "node_id": "1934961359",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 212.553,
-            "kind": "动作变化",
-            "motion_frame": 18.000036239624023,
-            "motion_id": 10,
-            "node_id": "4102615523",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 213.703,
-            "kind": "动作变化",
-            "motion_frame": 28.000226974487305,
-            "motion_id": 11,
-            "node_id": "1934961359",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 213.92,
-            "kind": "动作变化",
-            "motion_frame": 42.000274658203125,
-            "motion_id": 10,
-            "node_id": "4102615523",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "393494765",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 215.103,
+            "clock": 134.17,
             "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 50,
-            "node_id": "2077678327",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "53296028",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 215.753,
+            "clock": 134.452,
             "kind": "动作变化",
-            "motion_frame": 0.000171661376953125,
-            "motion_id": 33,
-            "node_id": "2451015056",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 216.12,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 10,
-            "node_id": "4102615523",
+            "motion_frame": 0.6096417307853699,
+            "motion_id": 37,
+            "node_id": "3158204718",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 216.387,
+            "clock": 134.886,
             "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 50,
-            "node_id": "2077678327",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 217.036,
-            "kind": "动作变化",
-            "motion_frame": 9.5367431640625e-05,
-            "motion_id": 33,
-            "node_id": "2451015056",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 51,
-            "clock": 217.136,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 11,
-            "node_id": "1934961359",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 217.237,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 205,
-            "node_id": "1704832922",
-            "weapon_type": 13
-        },
-        {
-            "attack_object_type": "via.GameObject",
-            "bank_id": 100,
-            "clock": 217.852,
-            "kind": "受击",
-            "motion_frame": 38.0001106262207,
-            "motion_id": 205,
-            "node_id": "1704832922",
-            "owner_type": 1,
-            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
-            "source": "em131_00",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 1,
-            "clock": 217.87,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 57,
-            "node_id": "1570683008",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 1,
-            "clock": 219.337,
-            "kind": "动作变化",
-            "motion_frame": 0.00542449951171875,
-            "motion_id": 58,
-            "node_id": "424205800",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 219.353,
-            "kind": "动作变化",
-            "motion_frame": 1.0000020265579224,
-            "motion_id": 456,
-            "node_id": "1712018032",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 220.603,
-            "kind": "动作变化",
-            "motion_frame": 76.00079345703125,
-            "motion_id": 456,
-            "node_id": "817395184",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 220.62,
-            "kind": "动作变化",
-            "motion_frame": 77.00079345703125,
-            "motion_id": 456,
-            "node_id": "2263904220",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 220.838,
-            "kind": "动作变化",
-            "motion_frame": 0.00079345703125,
+            "motion_frame": 0.6101894378662109,
             "motion_id": 1,
             "node_id": "1564395738",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 221.37,
-            "kind": "标记",
-            "marker": "GP 过晚",
-            "motion_frame": 32.000858306884766,
-            "motion_id": 1,
-            "node_id": "1564395738",
-            "weapon_type": 13
-        },
-        {
-            "bank_id": 100,
-            "clock": 221.553,
+            "clock": 138.202,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
             "motion_id": 5,
@@ -383,7 +265,7 @@
         },
         {
             "bank_id": 100,
-            "clock": 221.687,
+            "clock": 138.72,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
             "motion_id": 62,
@@ -392,16 +274,859 @@
         },
         {
             "bank_id": 100,
-            "clock": 222.17,
+            "clock": 139.036,
             "kind": "动作变化",
-            "motion_frame": 5.91278076171875e-05,
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 139.519,
+            "kind": "动作变化",
+            "motion_frame": 30.000375747680664,
+            "motion_id": 100,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 139.587,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 139.754,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 140.404,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 110,
+            "node_id": "1539560985",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 140.82,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.203,
+            "kind": "动作变化",
+            "motion_frame": 24.000280380249023,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.27,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.47,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.486,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.503,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 141.774,
+            "kind": "受击",
+            "motion_frame": 18.000036239624023,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.774,
+            "kind": "自动 GP",
+            "motion_frame": 18.000036239624023,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.775,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 18.000036239624023,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 141.782,
+            "kind": "受击",
+            "motion_frame": 19.75814437866211,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.783,
+            "kind": "动作变化",
+            "motion_frame": 19.75814437866211,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 141.798,
+            "kind": "受击",
+            "motion_frame": 20.758146286010742,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 141.815,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.816,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 141.816,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 142.466,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 142.782,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 143.016,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 143.399,
+            "kind": "动作变化",
+            "motion_frame": 24.000221252441406,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 143.467,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 143.733,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 117,
+            "node_id": "4050953827",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 144.033,
+            "kind": "动作变化",
+            "motion_frame": 19.00008773803711,
+            "motion_id": 117,
+            "node_id": "3939223324",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 144.483,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 144.566,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.049,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.116,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.299,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.682,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 145.75,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 146.033,
+            "kind": "动作变化",
+            "motion_frame": 24.001445770263672,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 146.116,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 146.599,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 146.666,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 146.85,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.232,
+            "kind": "动作变化",
+            "motion_frame": 24.000335693359375,
+            "motion_id": 107,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.3,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.483,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 147.631,
+            "kind": "受击",
+            "motion_frame": 10.000020027160645,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.631,
+            "kind": "自动 GP",
+            "motion_frame": 10.000020027160645,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.632,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 10.000020027160645,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 147.648,
+            "kind": "受击",
+            "motion_frame": 11.000021934509277,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.65,
+            "kind": "动作变化",
+            "motion_frame": 11.000021934509277,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 147.665,
+            "kind": "受击",
+            "motion_frame": 12.00002384185791,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 147.681,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.683,
+            "confirmed_motion": 203,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 147.683,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 148.333,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "86813457",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 148.649,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "1059720556",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 148.883,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 149.266,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 149.333,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 149.649,
+            "kind": "动作变化",
+            "motion_frame": 3.6488410842139274e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 149.666,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 150.317,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 110,
+            "node_id": "462830080",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 150.699,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 151.35,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 110,
+            "node_id": "462830080",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 151.766,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.149,
+            "kind": "动作变化",
+            "motion_frame": 24.000545501708984,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.217,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.4,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.416,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.433,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.783,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 152.851,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.166,
+            "kind": "动作变化",
+            "motion_frame": 3.6488410842139274e-05,
             "motion_id": 33,
             "node_id": "2451015056",
             "weapon_type": 13
         },
         {
             "bank_id": 51,
-            "clock": 222.188,
+            "clock": 153.183,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.233,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 153.631,
+            "kind": "受击",
+            "motion_frame": 25.000049591064453,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.631,
+            "kind": "自动 GP",
+            "motion_frame": 25.000049591064453,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.631,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 25.000049591064453,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 153.648,
+            "kind": "受击",
+            "motion_frame": 26.000051498413086,
+            "motion_id": 100,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.649,
+            "kind": "动作变化",
+            "motion_frame": 26.000051498413086,
+            "motion_id": 100,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 153.665,
+            "kind": "受击",
+            "motion_frame": 27.00005340576172,
+            "motion_id": 100,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 153.682,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.683,
+            "confirmed_motion": 203,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 153.683,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 154.333,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "86813457",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 154.65,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "1059720556",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 154.883,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 155.267,
+            "kind": "动作变化",
+            "motion_frame": 24.002777099609375,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 155.334,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 155.65,
+            "kind": "动作变化",
+            "motion_frame": 3.6488410842139274e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 155.666,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
             "motion_id": 10,
@@ -410,7 +1135,7 @@
         },
         {
             "bank_id": 100,
-            "clock": 223.136,
+            "clock": 156.4,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
             "motion_id": 50,
@@ -418,21 +1143,265 @@
             "weapon_type": 13
         },
         {
+            "bank_id": 100,
+            "clock": 157.049,
+            "kind": "动作变化",
+            "motion_frame": 9.5367431640625e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 157.116,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 158.482,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 49,
+            "node_id": "246235333",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 159.132,
+            "kind": "动作变化",
+            "motion_frame": 9.5367431640625e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 159.832,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.316,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.383,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.566,
+            "kind": "动作变化",
+            "motion_frame": 27.60005760192871,
+            "motion_id": 110,
+            "node_id": "2680068364",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.583,
+            "kind": "动作变化",
+            "motion_frame": 29.900062561035156,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 160.649,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 161.301,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 110,
+            "node_id": "2033012350",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 161.716,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 162.099,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 162.167,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 162.483,
+            "kind": "动作变化",
+            "motion_frame": 3.6488410842139274e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 162.5,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 162.533,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 164.499,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 164.682,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 166.649,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 168.283,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 110,
+            "node_id": "2033012350",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 168.666,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 169.317,
+            "kind": "动作变化",
+            "motion_frame": 1.0009320974349976,
+            "motion_id": 110,
+            "node_id": "1539560985",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 169.7,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 170.35,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 170.666,
+            "kind": "动作变化",
+            "motion_frame": 20.000051498413086,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 170.867,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
             "attack_object_type": "via.GameObject",
             "bank_id": 100,
-            "clock": 223.686,
+            "clock": 171.232,
             "kind": "受击",
-            "motion_frame": 34.00965118408203,
-            "motion_id": 50,
-            "node_id": "2077678327",
+            "motion_frame": 23.000099182128906,
+            "motion_id": 203,
+            "node_id": "34212903",
             "owner_type": 1,
             "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
             "source": "em131_00",
+            "weapon_on": true,
             "weapon_type": 13
         },
         {
             "bank_id": 1,
-            "clock": 223.703,
+            "clock": 171.25,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
             "motion_id": 15,
@@ -441,7 +1410,7 @@
         },
         {
             "bank_id": 1,
-            "clock": 224.503,
+            "clock": 172.082,
             "kind": "动作变化",
             "motion_frame": 1.0000020265579224,
             "motion_id": 16,
@@ -449,8 +1418,1534 @@
             "weapon_type": 13
         },
         {
+            "bank_id": 4,
+            "clock": 172.217,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 130,
+            "node_id": "3026911309",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 172.683,
+            "kind": "动作变化",
+            "motion_frame": 5.7220458984375e-05,
+            "motion_id": 131,
+            "node_id": "518191357",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 172.733,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1986721532",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 173.333,
+            "kind": "动作变化",
+            "motion_frame": 8.392333984375e-05,
+            "motion_id": 83,
+            "node_id": "1693613244",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 173.649,
+            "kind": "动作变化",
+            "motion_frame": 19.000865936279297,
+            "motion_id": 83,
+            "node_id": "1220499058",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 0,
+            "clock": 173.916,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 73,
+            "node_id": "1495715203",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 0,
+            "clock": 174.349,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 18,
+            "node_id": "1505041940",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 0,
+            "clock": 175.0,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 22,
+            "node_id": "2888162697",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 50,
+            "clock": 175.467,
+            "kind": "动作变化",
+            "motion_frame": 0.017108917236328125,
+            "motion_id": 6,
+            "node_id": "3043427341",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 0,
+            "clock": 175.483,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 14,
+            "node_id": "1266996291",
+            "weapon_type": 13
+        },
+        {
             "bank_id": 100,
-            "clock": 225.487,
+            "clock": 175.6,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 301,
+            "node_id": "2653496603",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 176.099,
+            "kind": "动作变化",
+            "motion_frame": 31.0,
+            "motion_id": 301,
+            "node_id": "393494765",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 176.167,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 176.283,
+            "kind": "动作变化",
+            "motion_frame": 18.40003776550293,
+            "motion_id": 110,
+            "node_id": "2680068364",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 176.3,
+            "kind": "动作变化",
+            "motion_frame": 20.700042724609375,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 176.451,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 176.566,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.049,
+            "kind": "动作变化",
+            "motion_frame": 30.000621795654297,
+            "motion_id": 100,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.116,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 177.132,
+            "kind": "受击",
+            "motion_frame": 4.600009441375732,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.132,
+            "kind": "自动 GP",
+            "motion_frame": 4.600009441375732,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.132,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 4.600009441375732,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 177.149,
+            "kind": "受击",
+            "motion_frame": 6.9000139236450195,
+            "motion_id": 110,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.15,
+            "kind": "动作变化",
+            "motion_frame": 6.9000139236450195,
+            "motion_id": 110,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 177.165,
+            "kind": "受击",
+            "motion_frame": 9.200018882751465,
+            "motion_id": 110,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 177.182,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.183,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 177.183,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 178.084,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 178.401,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 178.633,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 179.016,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "3882739166",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 179.084,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "904170324",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 179.4,
+            "kind": "动作变化",
+            "motion_frame": 3.6488410842139274e-05,
+            "motion_id": 37,
+            "node_id": "3158204718",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 179.834,
+            "kind": "动作变化",
+            "motion_frame": 8.7738037109375e-05,
+            "motion_id": 1,
+            "node_id": "1564395738",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 183.032,
+            "kind": "受击",
+            "motion_frame": 192.015625,
+            "motion_id": 1,
+            "node_id": "1564395738",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 183.032,
+            "kind": "自动 GP",
+            "motion_frame": 192.015625,
+            "motion_id": 1,
+            "node_id": "1564395738",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 183.032,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 192.015625,
+            "motion_id": 1,
+            "node_id": "1564395738",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 183.049,
+            "kind": "受击",
+            "motion_frame": 193.015625,
+            "motion_id": 1,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 183.05,
+            "kind": "动作变化",
+            "motion_frame": 193.015625,
+            "motion_id": 1,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 183.065,
+            "kind": "受击",
+            "motion_frame": 194.015625,
+            "motion_id": 1,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 183.082,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 183.083,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 183.083,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 183.734,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 184.05,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 184.283,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 184.667,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "3882739166",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 184.735,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "904170324",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 184.917,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 185.301,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "393494765",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 185.367,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 185.534,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 186.184,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 110,
+            "node_id": "462830080",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 186.6,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 187.251,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "86813457",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 187.567,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "1059720556",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 187.8,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.183,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "3882739166",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.251,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "904170324",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.45,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.833,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "393494765",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.901,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 188.933,
+            "kind": "受击",
+            "motion_frame": 6.9000139236450195,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.933,
+            "kind": "自动 GP",
+            "motion_frame": 6.9000139236450195,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.933,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 6.9000139236450195,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 188.95,
+            "kind": "受击",
+            "motion_frame": 9.200018882751465,
+            "motion_id": 110,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.951,
+            "kind": "动作变化",
+            "motion_frame": 9.200018882751465,
+            "motion_id": 110,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 188.966,
+            "kind": "受击",
+            "motion_frame": 11.50002384185791,
+            "motion_id": 110,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 188.983,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.984,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 188.984,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 189.634,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 189.95,
+            "kind": "动作变化",
+            "motion_frame": 20.00118637084961,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 190.15,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 190.801,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 191.116,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 191.35,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 191.734,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "393494765",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 191.8,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "53296028",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 192.083,
+            "kind": "动作变化",
+            "motion_frame": 0.6087294816970825,
+            "motion_id": 37,
+            "node_id": "3158204718",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 192.5,
+            "kind": "动作变化",
+            "motion_frame": 9.34600830078125e-05,
+            "motion_id": 1,
+            "node_id": "1564395738",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 192.6,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "400001054",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 193.083,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 10,
+            "node_id": "1731229352",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 193.666,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 15,
+            "node_id": "65654325",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.15,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 15,
+            "node_id": "1158280851",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.233,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 106,
+            "node_id": "3088426387",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.45,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 104,
+            "node_id": "2855224287",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.466,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 104,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.534,
+            "kind": "动作变化",
+            "motion_frame": 2.301481008529663,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.717,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 194.832,
+            "kind": "受击",
+            "motion_frame": 8.000016212463379,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.832,
+            "kind": "自动 GP",
+            "motion_frame": 8.000016212463379,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.832,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 8.000016212463379,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 194.849,
+            "kind": "受击",
+            "motion_frame": 9.000018119812012,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.851,
+            "kind": "动作变化",
+            "motion_frame": 9.000018119812012,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 194.866,
+            "kind": "受击",
+            "motion_frame": 10.000020027160645,
+            "motion_id": 107,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 194.882,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.884,
+            "confirmed_motion": 204,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 194.884,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 195.534,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "1508576990",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 195.85,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "1460268910",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 196.084,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 196.467,
+            "kind": "动作变化",
+            "motion_frame": 24.00076675415039,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 196.534,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 196.767,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.017,
+            "kind": "动作变化",
+            "motion_frame": 16.000032424926758,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.034,
+            "kind": "动作变化",
+            "motion_frame": 17.00003433227539,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.15,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.218,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.401,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.784,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 197.851,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.034,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.2,
+            "kind": "动作变化",
+            "motion_frame": 11.000021934509277,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.217,
+            "kind": "动作变化",
+            "motion_frame": 12.00002384185791,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.417,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.485,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.751,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.767,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 198.784,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.134,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.201,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.384,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.401,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.417,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.767,
+            "kind": "动作变化",
+            "motion_frame": 24.00061798095703,
+            "motion_id": 107,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 199.835,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 200.117,
+            "kind": "动作变化",
+            "motion_frame": 7.000013828277588,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 51,
+            "clock": 200.733,
+            "kind": "受击",
+            "motion_frame": 44.0001106262207,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 200.733,
+            "kind": "自动 GP",
+            "motion_frame": 44.0001106262207,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 200.733,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 44.0001106262207,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 51,
+            "clock": 200.749,
+            "kind": "受击",
+            "motion_frame": 45.00011444091797,
+            "motion_id": 10,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 200.751,
+            "kind": "动作变化",
+            "motion_frame": 45.00011444091797,
+            "motion_id": 10,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 51,
+            "clock": 200.766,
+            "kind": "受击",
+            "motion_frame": 46.000118255615234,
+            "motion_id": 10,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 200.783,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 200.784,
+            "confirmed_motion": 204,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 200.784,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 204,
+            "node_id": "1440439516",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 201.535,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "1508576990",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 201.85,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "1460268910",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 202.084,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "1441261145",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 202.467,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "3882739166",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 202.535,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "904170324",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 202.85,
+            "kind": "动作变化",
+            "motion_frame": 3.6488410842139274e-05,
+            "motion_id": 6,
+            "node_id": "3639862651",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 203.117,
+            "kind": "动作变化",
+            "motion_frame": 16.00006866455078,
+            "motion_id": 6,
+            "node_id": "3639862652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 203.15,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 62,
+            "node_id": "2324425078",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 203.633,
+            "kind": "动作变化",
+            "motion_frame": 5.91278076171875e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 203.65,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 204.033,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 49,
+            "node_id": "246235333",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 204.684,
+            "kind": "动作变化",
+            "motion_frame": 9.5367431640625e-05,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 206.2,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 206.25,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 206.649,
+            "kind": "受击",
+            "motion_frame": 25.000049591064453,
+            "motion_id": 203,
+            "node_id": "34212903",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.DummyHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 1,
+            "clock": 206.667,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 15,
+            "node_id": "368642309",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 1,
+            "clock": 207.483,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 16,
+            "node_id": "3295407872",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 1,
+            "clock": 208.464,
+            "kind": "持出状态",
+            "motion_frame": 59.00016784667969,
+            "motion_id": 16,
+            "node_id": "3295407872",
+            "source": "PlayerFsm2ConditionIsWeaponOn.evaluate",
+            "value": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 208.467,
             "kind": "动作变化",
             "motion_frame": 0.000171661376953125,
             "motion_id": 452,
@@ -458,50 +2953,1347 @@
             "weapon_type": 13
         },
         {
-            "bank_id": 100,
-            "clock": 226.654,
+            "bank_id": 4,
+            "clock": 209.367,
             "kind": "动作变化",
-            "motion_frame": 70.00035858154297,
-            "motion_id": 452,
-            "node_id": "817395184",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 130,
+            "node_id": "3026911309",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 4,
+            "clock": 209.833,
+            "kind": "动作变化",
+            "motion_frame": 5.7220458984375e-05,
+            "motion_id": 131,
+            "node_id": "518191357",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 226.671,
+            "clock": 210.334,
             "kind": "动作变化",
-            "motion_frame": 71.00035858154297,
-            "motion_id": 452,
-            "node_id": "2263904220",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 150,
+            "node_id": "3360746832",
             "weapon_type": 13
         },
         {
             "bank_id": 100,
-            "clock": 226.821,
+            "clock": 210.367,
             "kind": "动作变化",
-            "motion_frame": 0.00035858154296875,
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 152,
+            "node_id": "2958821540",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 210.45,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 77,
+            "node_id": "934362218",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 210.667,
+            "kind": "动作变化",
+            "motion_frame": 2.765655517578125e-05,
+            "motion_id": 4,
+            "node_id": "2704860344",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 210.784,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 106,
+            "node_id": "3088426387",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.001,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 104,
+            "node_id": "2855224287",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.017,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 104,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.084,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.284,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.667,
+            "kind": "动作变化",
+            "motion_frame": 24.000137329101563,
+            "motion_id": 107,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.735,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 211.95,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.334,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.402,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 212.633,
+            "kind": "受击",
+            "motion_frame": 34.50006866455078,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.633,
+            "kind": "自动 GP",
+            "motion_frame": 34.50006866455078,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.633,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 34.50006866455078,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 212.649,
+            "kind": "受击",
+            "motion_frame": 36.800071716308594,
+            "motion_id": 113,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.651,
+            "kind": "动作变化",
+            "motion_frame": 36.800071716308594,
+            "motion_id": 113,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 212.666,
+            "kind": "受击",
+            "motion_frame": 39.100074768066406,
+            "motion_id": 113,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 212.683,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.684,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 212.684,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 214.117,
+            "kind": "动作变化",
+            "motion_frame": 0.00018310546875,
+            "motion_id": 149,
+            "node_id": "529344664",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 215.2,
+            "kind": "动作变化",
+            "motion_frame": 0.0003662109375,
             "motion_id": 1,
             "node_id": "1564395738",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 217.5,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 7,
+            "node_id": "1832488295",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 217.75,
+            "kind": "动作变化",
+            "motion_frame": 16.000295639038086,
+            "motion_id": 7,
+            "node_id": "1832488296",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 218.532,
+            "kind": "受击",
+            "motion_frame": 63.00263977050781,
+            "motion_id": 7,
+            "node_id": "1832488296",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 218.532,
+            "kind": "自动 GP",
+            "motion_frame": 63.00263977050781,
+            "motion_id": 7,
+            "node_id": "1832488296",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 218.532,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 63.00263977050781,
+            "motion_id": 7,
+            "node_id": "1832488296",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 218.549,
+            "kind": "受击",
+            "motion_frame": 64.00263977050781,
+            "motion_id": 7,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 218.55,
+            "kind": "动作变化",
+            "motion_frame": 64.00263977050781,
+            "motion_id": 7,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 218.565,
+            "kind": "受击",
+            "motion_frame": 65.00279998779297,
+            "motion_id": 7,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 218.582,
+            "kind": "受击",
+            "motion_frame": 1.000002145767212,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "em131_00",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 218.584,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.000002145767212,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 218.584,
+            "kind": "动作变化",
+            "motion_frame": 1.000002145767212,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 219.567,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 219.634,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 220.117,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 220.184,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 220.367,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 220.75,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 220.818,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 221.001,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 221.384,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 104,
+            "node_id": "2855224287",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 221.534,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 222.518,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 222.833,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 223.034,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 205,
+            "node_id": "1704832922",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 223.684,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "1628603422",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 224.0,
+            "kind": "动作变化",
+            "motion_frame": 20.000202178955078,
+            "motion_id": 113,
+            "node_id": "2479348435",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 224.433,
+            "kind": "动作变化",
+            "motion_frame": 0.00058746337890625,
+            "motion_id": 37,
+            "node_id": "3158204718",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 224.85,
+            "kind": "动作变化",
+            "motion_frame": 5.14984130859375e-05,
+            "motion_id": 1,
+            "node_id": "1564395738",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 239.017,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 62,
+            "node_id": "2324425079",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 239.5,
+            "kind": "动作变化",
+            "motion_frame": 0.0013980865478515625,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 239.534,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 239.583,
+            "kind": "动作变化",
+            "motion_frame": 4.0000081062316895,
+            "motion_id": 100,
+            "node_id": "4269840301",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 239.6,
+            "kind": "动作变化",
+            "motion_frame": 5.000010013580322,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.017,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.084,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.35,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.734,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.784,
+            "kind": "动作变化",
+            "motion_frame": 27.00005340576172,
+            "motion_id": 107,
+            "node_id": "3240487140",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.801,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 240.984,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 241.367,
+            "kind": "动作变化",
+            "motion_frame": 24.00077247619629,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 241.434,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 241.618,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 241.884,
+            "kind": "动作变化",
+            "motion_frame": 17.00081443786621,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 241.901,
+            "kind": "动作变化",
+            "motion_frame": 18.000816345214844,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.001,
+            "kind": "动作变化",
+            "motion_frame": 24.0010986328125,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.068,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.251,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.267,
+            "kind": "动作变化",
+            "motion_frame": 2.0000040531158447,
+            "motion_id": 107,
+            "node_id": "2194056699",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.284,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.634,
+            "kind": "动作变化",
+            "motion_frame": 24.001018524169922,
+            "motion_id": 107,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.701,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.951,
+            "kind": "动作变化",
+            "motion_frame": 36.800071716308594,
+            "motion_id": 110,
+            "node_id": "2680068364",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 242.967,
+            "kind": "动作变化",
+            "motion_frame": 39.100074768066406,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 242.984,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 243.367,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 50,
+            "node_id": "2077678327",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 243.517,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 243.534,
+            "kind": "动作变化",
+            "motion_frame": 3.0000061988830566,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 243.551,
+            "kind": "动作变化",
+            "motion_frame": 5.000010013580322,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 243.65,
+            "kind": "动作变化",
+            "motion_frame": 12.00002384185791,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 243.667,
+            "kind": "动作变化",
+            "motion_frame": 14.000027656555176,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 243.684,
+            "kind": "动作变化",
+            "motion_frame": 16.000032424926758,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 243.767,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 244.25,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 244.318,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 244.601,
+            "kind": "动作变化",
+            "motion_frame": 37.000083923339844,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 244.617,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 50,
+            "node_id": "2077678327",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 244.771,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 244.817,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 50,
+            "node_id": "2077678327",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 244.967,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 244.985,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 49,
+            "node_id": "246235333",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 245.034,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 245.517,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 245.584,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 245.65,
+            "kind": "动作变化",
+            "motion_frame": 11.50002384185791,
+            "motion_id": 110,
+            "node_id": "2680068364",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 245.667,
+            "kind": "动作变化",
+            "motion_frame": 13.800028800964355,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 245.867,
+            "kind": "动作变化",
+            "motion_frame": 14.000027656555176,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 246.184,
+            "kind": "动作变化",
+            "motion_frame": 34.000518798828125,
+            "motion_id": 11,
+            "node_id": "1934961359",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 246.551,
+            "kind": "动作变化",
+            "motion_frame": 57.00059509277344,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 247.318,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 247.801,
+            "kind": "动作变化",
+            "motion_frame": 30.00104331970215,
+            "motion_id": 100,
+            "node_id": "2031862686",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 247.868,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "70509652",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 51,
+            "clock": 248.151,
+            "kind": "动作变化",
+            "motion_frame": 34.00183868408203,
+            "motion_id": 10,
+            "node_id": "4102615523",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 248.318,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3885737708",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 248.801,
+            "kind": "动作变化",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 248.868,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 249.067,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "947526148",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 249.45,
+            "kind": "动作变化",
+            "motion_frame": 24.000688552856445,
+            "motion_id": 107,
+            "node_id": "2040345298",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 249.518,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 110,
+            "node_id": "592553338",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 249.8,
+            "kind": "动作变化",
+            "motion_frame": 0.6087294816970825,
+            "motion_id": 33,
+            "node_id": "2451015056",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 250.05,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 250.499,
+            "kind": "受击",
+            "motion_frame": 28.00005531311035,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "gasspray",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 250.499,
+            "kind": "自动 GP",
+            "motion_frame": 28.00005531311035,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "target_node": 2692283689,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 250.499,
+            "kind": "自动 GP 前置拦截",
+            "motion_frame": 28.00005531311035,
+            "motion_id": 100,
+            "node_id": "3434542383",
+            "original_flow": 0,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 250.516,
+            "kind": "受击",
+            "motion_frame": 29.000057220458984,
+            "motion_id": 100,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "gasspray",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 250.517,
+            "kind": "动作变化",
+            "motion_frame": 29.000057220458984,
+            "motion_id": 100,
+            "node_id": "2692283689",
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 250.533,
+            "kind": "受击",
+            "motion_frame": 30.000059127807617,
+            "motion_id": 100,
+            "node_id": "2692283689",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "gasspray",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "attack_object_type": "via.GameObject",
+            "bank_id": 100,
+            "clock": 250.55,
+            "kind": "受击",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "owner_type": 1,
+            "owner_type_name": "snow.hit.userdata.EmHitAttackShapeData",
+            "source": "gasspray",
+            "weapon_on": true,
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 250.551,
+            "confirmed_motion": 202,
+            "kind": "自动 GP 动作进入",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 250.551,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 202,
+            "node_id": "3705732986",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 251.335,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "848860939",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 251.651,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "4167490970",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 251.884,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 107,
+            "node_id": "2369693270",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 252.267,
+            "kind": "动作变化",
+            "motion_frame": 24.00004768371582,
+            "motion_id": 107,
+            "node_id": "2662978956",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 252.335,
+            "kind": "动作变化",
+            "motion_frame": 2.300004720687866,
+            "motion_id": 113,
+            "node_id": "1789011475",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 252.601,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 205,
+            "node_id": "1704832922",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 253.385,
+            "kind": "动作变化",
+            "motion_frame": 1.0000020265579224,
+            "motion_id": 113,
+            "node_id": "1628603422",
+            "weapon_type": 13
+        },
+        {
+            "bank_id": 100,
+            "clock": 253.7,
+            "kind": "动作变化",
+            "motion_frame": 20.00004005432129,
+            "motion_id": 113,
+            "node_id": "2479348435",
             "weapon_type": 13
         }
     ],
     "game_version": "16.0.2.0",
     "mod": "BowAssist",
     "runtime": {
+        "auto_chain_protect_remaining": 0,
+        "auto_chain_protect_until_frame": 12631,
+        "auto_cycle_lock": false,
+        "auto_cycle_seen_motion": false,
+        "auto_pending_age": 0,
+        "auto_protected_count": 11,
+        "auto_rearm_frames": 0,
+        "auto_request_attempts": 2,
+        "auto_request_motion": 100,
+        "auto_request_node": 3434542383,
+        "auto_request_source": "MotionFsm2Layer:setCurrentNode + BehaviorTree:setCurrentNode",
+        "auto_trigger_count": 11,
         "bank_id": 100,
-        "damage_events": 3,
+        "damage_events": 46,
         "gp_check_events": 0,
-        "last_damage_flow": 0,
+        "known_action_modified_count": 0,
+        "known_action_probe": "无",
+        "known_action_target_count": 0,
+        "last_auto_trigger": "自动动作已进入",
+        "last_damage_flow": 2,
+        "last_enemy_damage_frame": 12631,
         "last_gp_check_type": -1,
         "last_gp_result": -1,
-        "last_marker": "GP 过晚",
+        "last_marker": "无",
         "last_owner_type": 1,
-        "last_source": "em131_00",
-        "motion_events": 116,
-        "motion_frame": 174.00115966796875,
-        "motion_id": 1,
+        "last_reflex_condition": "无",
+        "last_reflex_signature": "无",
+        "last_reject_reason": "无",
+        "last_source": "gasspray",
+        "motion_events": 360,
+        "motion_frame": 20.00004005432129,
+        "motion_id": 113,
+        "motion_reflex_active_target": "无",
+        "motion_reflex_last_target": "未启用",
+        "motion_reflex_modified_count": 0,
+        "motion_reflex_probe": "无",
+        "motion_reflex_target_count": 0,
+        "motion_tree_node_count": 4993,
         "multiplayer": false,
-        "node_id": "1564395738",
+        "multiplayer_signal": "QuestStatus=0;信号=未命中",
+        "node_id": "2479348435",
+        "online_session": false,
+        "pending_auto_frames": 0,
+        "player_count": -1,
+        "quest_status": 0,
+        "reflex_action_count": 0,
+        "reflex_action_events": 0,
+        "reflex_condition_count": 0,
+        "reflex_condition_events": 0,
+        "weapon_on": true,
+        "weapon_on_condition_frame": 10106,
+        "weapon_on_condition_value": true,
+        "weapon_on_frame": 12821,
+        "weapon_on_source": "PlayerBase.isWeaponOn",
         "weapon_type": 13
     }
 }

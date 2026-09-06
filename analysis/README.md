@@ -11,10 +11,12 @@
 ```text
 raw/natives/STM/player/mot/plf_Bow_100.motlist.528
 raw/natives/STM/player/mot/plf_Bow_bank.motbank.3
+raw/natives/STM/player/Fsm/Bow/Bow.motfsm2.43
 ```
 
 - `plf_Bow_100.motlist.528`：弓 Bank 100 的原始 Motion 列表。
 - `plf_Bow_bank.motbank.3`：弓动作 Bank 索引。
+- `Bow.motfsm2.43`：弓 Motion FSM、四向闪身箭斩节点和 Action/Condition 关系。
 
 ### 弓运行时采集
 
@@ -22,21 +24,38 @@ raw/natives/STM/player/mot/plf_Bow_bank.motbank.3
 captures/BowAssist_capture.json
 ```
 
-该采集包含弓 `13`、Bank `100`、四向 Motion、`em131_00` 受击以及 GP 过早/过晚标记。它是诊断证据，不是需要放入游戏目录的配置文件。
+该采集包含弓 `13`、Bank `100`、四向 Motion、`em131_00` 受击、GP 过早/过晚标记和最终同一攻击链重复回调证据。它是诊断证据，不是需要放入游戏目录的配置文件。
 
 四向 NodeIndex `4281-4284`、Act10 读取方式、Action `9234/9287/9251/9269` 和 `Action_gx = 61` 的版本偏移说明，见 [`bow/BOW_ACTION_ANALYSIS.md`](bow/BOW_ACTION_ANALYSIS.md)。
 
 ## 目录内容
+
+### 开发工具源码
+
+为方便版本更新，保留本次使用的最小提取工具源码，不包含编译产物：
+
+```text
+tools/LongSwordKamuiCapture.lua
+tools/bow-fsm-extract/
+tools/pak-extract/
+```
+
+`bow-fsm-extract` 用于从当前生效 PAK 提取弓 Motion FSM，`pak-extract` 是通用的
+PAK/Zstandard 定向提取工具。`bin/`、`obj/`、游戏 DLL、配置和临时备份不纳入仓库。
 
 ### 原始拆包资源
 
 ```text
 raw/natives/STM/player/Fsm/LongSword/LongSword.motfsm2.43
 raw/natives/STM/player/hit/LongSword.rcol.20
+raw/natives/STM/player/mot/plw_LongSword_100.motlist.528
+raw/natives/STM/player/mot/plw_LongSword_bank.motbank.3
 ```
 
 - `LongSword.motfsm2.43`：太刀 Motion FSM、节点、Action、Condition 和 Transition 的原始资源。
 - `LongSword.rcol.20`：太刀碰撞与攻击判定相关资源。
+- `plw_LongSword_100.motlist.528`：太刀 Bank 100 的 Motion 列表。
+- `plw_LongSword_bank.motbank.3`：太刀动作 Bank 索引。
 
 保留原始游戏路径是为了后续使用 RE_RSZ、010 Editor 或 BHVT 工具时直接定位，不必重新从游戏包中解包。
 
@@ -45,6 +64,7 @@ raw/natives/STM/player/hit/LongSword.rcol.20
 ```text
 captures/LongSwordAssist_capture.json
 captures/LongSwordAssist_transition_probe_legacy_invalid.json
+captures/LongSwordKamui_capture.json
 ```
 
 `LongSwordAssist_capture.json` 是有效采集，包含：
@@ -107,7 +127,11 @@ A47DDA25415B4BBA349B36D39CB807428EDD6E32DFA33DB81A15D96CC7ABE048  LongSword.motf
 C2AC01F37B258D84FC3AFA99E5B68A190E93E67A58A7F4781BE194088D5C5B0F  LongSword.rcol.20
 334CA332FE2CF367F1E8BCF01F27F2823EB3900C0C85425B9E42DFD2D215A975  LongSwordAssist_capture.json
 94ACEA8D2F49D5D43320626BE6ECADA87FA97494191DB599F9C1D76BD47EA251  LongSwordAssist_transition_probe_legacy_invalid.json
-D7F988CBAA67689D8EB8CB5C884FE211ADD7F0A64D74344894100585EF33B7EB  BowAssist_capture.json
+47F164E9D22A64D1D88544D7E1BF022E69433CEB9D80ED7865E2F19A2DCBA550  BowAssist_capture.json
+2F3F9C1F45D8C0DBD36E73D2E7571E035752C1CA710C79AF84F69056673FE2B3  LongSwordKamui_capture.json
+DA18FCDE70656CE1E62E287A834CC4C3EBEACBE62BE0B54C9A73AF2A4F523F85  Bow.motfsm2.43
 77D3EC016E2E2017EA8E81EDEE13C4C3C384F5DC37F5C79399382D2E1BF7F8DF  plf_Bow_100.motlist.528
 17B2B46449FD4CD5A642469EEC18A89D0723A4D0B1A62898D75D19A814BFBDC1  plf_Bow_bank.motbank.3
+2F117D2539EDD873C4FDFC75CD3A01AB49887AC08934E900F7964F64A255A38D  plw_LongSword_100.motlist.528
+7446B732D55030CDCCF10424E31040A84CD1B3BC04802C751D22266EDC7C51C9  plw_LongSword_bank.motbank.3
 ```

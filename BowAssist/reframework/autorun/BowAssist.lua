@@ -6,6 +6,11 @@ local CAPTURE_PATH = "BowAssist_capture.json"
 local DODGEBOLT_NODE_FALLBACK = 2692283689
 -- This build reports Bow exclusively as runtime weapon type 13.
 local BOW_RUNTIME_TYPE = 13
+local AUTO_QUIET_GAP_FRAMES = 20
+local AUTO_CHAIN_PROTECT_FRAMES = 3
+-- The original node request can spend more than one second in intermediate
+-- transition motions before Motion 452/456 becomes visible.
+local AUTO_PENDING_FRAMES = 150
 -- In the Motion FSM dump, 4281..4284 are NodeIndex values for the four
 -- directional Dodgebolt nodes. Act10 is read from each node's action array;
 -- these numbers are not global Action IDs.
@@ -27,6 +32,7 @@ local defaults = {
     auto_detect_multiplayer = true,
     auto_gp = false,
     auto_dodgebolt = false,
+    auto_gp_capture = false,
     manual_dodgebolt_extension = true,
     dodgebolt_post_frames = 12,
 }
@@ -127,6 +133,7 @@ local runtime = {
     behavior_tree = nil,
     motion_tree = nil,
     motion_tree_key = nil,
+    motion_fsm_layer = nil,
     player_quest_base = nil,
     motion_control = nil,
     weapon_type = -1,
@@ -159,6 +166,21 @@ local runtime = {
     last_reject_reason = "无",
     dodgebolt_node_id = nil,
     pending_auto_frames = 0,
+    auto_pending_age = 0,
+    auto_request_attempts = 0,
+    auto_request_source = "无",
+    auto_request_motion = -1,
+    auto_request_node = 0,
+    auto_chain_protect_until_frame = -100000,
+    weapon_on = nil,
+    weapon_on_source = "未读取",
+    weapon_on_frame = -100000,
+    weapon_on_condition_value = nil,
+    weapon_on_condition_frame = -100000,
+    auto_cycle_lock = false,
+    auto_rearm_frames = 0,
+    auto_cycle_seen_motion = false,
+    last_enemy_damage_frame = -100000,
     auto_protected_count = 0,
     motion_reflex_target_count = 0,
     motion_reflex_modified_count = 0,
@@ -189,6 +211,7 @@ local motion_reflex_original_ends = {}
 local known_action_original_ends = {}
 local last_motion_reflex_scan_frame = -1000
 local last_motion_reflex_scan_motion = -1
+local last_weapon_on_condition_logged = nil
 
 local function append_event(kind, extra)
     local event = {
@@ -241,6 +264,23 @@ local function save_capture()
         last_reject_reason = runtime.last_reject_reason,
         dodgebolt_node_id = runtime.dodgebolt_node_id,
         pending_auto_frames = runtime.pending_auto_frames,
+        auto_pending_age = runtime.auto_pending_age,
+        auto_request_attempts = runtime.auto_request_attempts,
+        auto_request_source = runtime.auto_request_source,
+        auto_request_motion = runtime.auto_request_motion,
+        auto_request_node = runtime.auto_request_node,
+        auto_chain_protect_remaining = math.max(
+            0, runtime.auto_chain_protect_until_frame - frame_counter),
+        auto_chain_protect_until_frame = runtime.auto_chain_protect_until_frame,
+        weapon_on = runtime.weapon_on,
+        weapon_on_source = runtime.weapon_on_source,
+        weapon_on_frame = runtime.weapon_on_frame,
+        weapon_on_condition_value = runtime.weapon_on_condition_value,
+        weapon_on_condition_frame = runtime.weapon_on_condition_frame,
+        auto_cycle_lock = runtime.auto_cycle_lock,
+        auto_rearm_frames = runtime.auto_rearm_frames,
+        auto_cycle_seen_motion = runtime.auto_cycle_seen_motion,
+        last_enemy_damage_frame = runtime.last_enemy_damage_frame,
         auto_protected_count = runtime.auto_protected_count,
         motion_reflex_target_count = runtime.motion_reflex_target_count,
         motion_reflex_modified_count = runtime.motion_reflex_modified_count,
@@ -257,6 +297,134 @@ local function save_capture()
 end
 
 local gp_check_context = nil
+
+local function read_boolean_state(object, methods, fields)
+    if object == nil then return nil, nil end
+    for _, method in ipairs(methods) do
+        local value = safe_call(object, method)
+        if type(value) == "boolean" then return value, method end
+    end
+    for _, field in ipairs(fields) do
+        local value = safe_field(object, field)
+        if type(value) == "boolean" then return value, field end
+    end
+    return nil, nil
+end
+
+local function refresh_weapon_on_state()
+    -- The original FSM condition is the authoritative source.  It is cached
+    -- by the evaluate hook below and avoids treating weapon type 13 as drawn.
+    if runtime.weapon_on_condition_value ~= nil
+        and frame_counter - runtime.weapon_on_condition_frame <= 2 then
+        runtime.weapon_on = runtime.weapon_on_condition_value
+        runtime.weapon_on_source = "原版 IsWeaponOn 条件"
+        runtime.weapon_on_frame = runtime.weapon_on_condition_frame
+        return runtime.weapon_on
+    end
+
+    local methods = {
+        "get_IsWeaponOn", "isWeaponOn", "get_WeaponOn", "get_IsWeaponDrawn",
+        "isWeaponDrawn", "get_IsDrawn",
+    }
+    local fields = {
+        "_WeaponOn", "_IsWeaponOn", "<WeaponOn>k__BackingField",
+        "<IsWeaponOn>k__BackingField", "_WeaponDrawn", "_IsWeaponDrawn",
+    }
+    local candidates = {
+        { object = runtime.master_player, label = "PlayerBase" },
+        { object = runtime.motion_control, label = "PlayerMotionControl" },
+    }
+
+    if runtime.game_object ~= nil then
+        for _, type_name_value in ipairs({
+            "snow.player.PlayerWeaponCtrl",
+            "snow.player.PlayerWeaponCtrlDB",
+            "snow.player.PlayerWeaponCtrlBase",
+        }) do
+            local type_ok, component_type = pcall(function() return sdk.typeof(type_name_value) end)
+            if type_ok and component_type ~= nil then
+                local component = safe_call(runtime.game_object, "getComponent(System.Type)", component_type)
+                candidates[#candidates + 1] = { object = component, label = type_name_value }
+            end
+        end
+    end
+
+    for _, candidate in ipairs(candidates) do
+        local value, source = read_boolean_state(candidate.object, methods, fields)
+        if value ~= nil then
+            runtime.weapon_on = value
+            runtime.weapon_on_source = candidate.label .. "." .. tostring(source)
+            runtime.weapon_on_frame = frame_counter
+            return value
+        end
+    end
+
+    -- Conservative fallback: these are active bow action motions. Generic
+    -- Bank 100 idle/sheathing motions are deliberately excluded.
+    local active_motion = {
+        [10] = true, [11] = true, [12] = true, [13] = true, [14] = true,
+        [15] = true, [16] = true, [17] = true, [18] = true, [19] = true,
+        [20] = true, [21] = true, [22] = true, [23] = true, [24] = true,
+        [25] = true, [26] = true, [27] = true, [28] = true, [29] = true,
+        [30] = true, [31] = true, [32] = true, [33] = true, [34] = true,
+        [35] = true, [36] = true, [37] = true, [38] = true, [39] = true,
+        [40] = true, [41] = true, [42] = true, [43] = true, [44] = true,
+        [45] = true, [46] = true, [47] = true, [48] = true, [49] = true,
+        [50] = true, [62] = true, [202] = true, [203] = true, [204] = true,
+        [205] = true, [452] = true, [456] = true,
+    }
+    local fallback = runtime.bank_id == 100 and active_motion[runtime.motion_id] == true
+    runtime.weapon_on = fallback
+    runtime.weapon_on_source = "动作白名单回退"
+    runtime.weapon_on_frame = frame_counter
+    return fallback
+end
+
+local function is_weapon_drawn()
+    if runtime.weapon_on ~= nil and frame_counter - runtime.weapon_on_frame <= 8 then
+        return runtime.weapon_on
+    end
+    return refresh_weapon_on_state() == true
+end
+
+local function is_dodgebolt_motion(motion_id)
+    return motion_id == 202 or motion_id == 203 or motion_id == 204 or motion_id == 205
+        or motion_id == 452 or motion_id == 456
+end
+
+local function is_auto_entry_motion_allowed()
+    -- Bank 1/0/50 are common hit, downed, menu, and recovery motion banks.
+    -- The original bow Dodgebolt entry is available from the active combat
+    -- banks used by the bow FSM, not from those recovery banks.
+    local bank = tonumber(runtime.bank_id)
+    return bank == 100 or bank == 51
+end
+
+local function append_auto_gp_snapshot(kind, extra)
+    if not config.auto_gp_capture then return end
+    local snapshot = {
+        weapon_on = runtime.weapon_on,
+        weapon_on_source = runtime.weapon_on_source,
+        auto_entry_allowed = is_auto_entry_motion_allowed(),
+        auto_cycle_lock = runtime.auto_cycle_lock,
+        auto_rearm_frames = runtime.auto_rearm_frames,
+        pending_auto_frames = runtime.pending_auto_frames,
+        auto_pending_age = runtime.auto_pending_age,
+        auto_request_attempts = runtime.auto_request_attempts,
+        auto_request_source = runtime.auto_request_source,
+        auto_request_motion = runtime.auto_request_motion,
+        auto_request_node = runtime.auto_request_node,
+        last_auto_trigger = runtime.last_auto_trigger,
+        last_reject_reason = runtime.last_reject_reason,
+        last_source = runtime.last_source,
+        last_owner_type = runtime.last_owner_type,
+        last_damage_flow = runtime.last_damage_flow,
+    }
+    if type(extra) == "table" then
+        for key, value in pairs(extra) do snapshot[key] = value end
+    end
+    append_event(kind, snapshot)
+end
 
 local function refresh_player()
     if runtime.player_manager == nil then
@@ -280,7 +448,8 @@ local function refresh_player()
             sdk.typeof("via.behaviortree.BehaviorTree"))
         local motion_fsm = safe_call(runtime.game_object, "getComponent(System.Type)",
             sdk.typeof("via.motion.MotionFsm2"))
-        local motion_layer = safe_call(motion_fsm, "getLayer", 0)
+        runtime.motion_fsm_layer = safe_call(motion_fsm, "getLayer", 0)
+        local motion_layer = runtime.motion_fsm_layer
         local ok_tree, motion_tree = pcall(function()
             return motion_layer and motion_layer:get_tree_object() or nil
         end)
@@ -311,6 +480,7 @@ local function refresh_player()
     if node ~= nil then runtime.node_id = tostring(node) end
     local layer = safe_call(runtime.master_player, "getMotionLayer", 0)
     runtime.motion_frame = safe_call(layer, "get_Frame") or 0.0
+    refresh_weapon_on_state()
     return true
 end
 
@@ -469,8 +639,85 @@ local function resolve_dodgebolt_node()
     return nil
 end
 
+local function submit_dodgebolt_request(target, prefer_fsm)
+    local sources = {}
+    local behavior_ok = false
+    local fsm_ok = false
+
+    local function try_behavior()
+        if runtime.behavior_tree == nil then return false end
+        local ok = pcall(function()
+            runtime.behavior_tree:call("setCurrentNode", target, nil, nil)
+        end)
+        if ok then
+            sources[#sources + 1] = "BehaviorTree:setCurrentNode"
+            return true
+        end
+        ok = pcall(function()
+            runtime.behavior_tree:call(
+                "setCurrentNode(System.UInt64, System.UInt32, via.behaviortree.SetNodeInfo)",
+                target, nil, nil)
+        end)
+        if ok then sources[#sources + 1] = "BehaviorTree:setCurrentNode(显式签名)" end
+        return ok
+    end
+
+    local function try_fsm()
+        if runtime.motion_fsm_layer == nil then return false end
+        local ok = pcall(function()
+            runtime.motion_fsm_layer:call(
+                "setCurrentNode(System.UInt64, via.behaviortree.SetNodeInfo, via.motion.SetMotionTransitionInfo)",
+                target, nil, nil)
+        end)
+        if ok then sources[#sources + 1] = "MotionFsm2Layer:setCurrentNode" end
+        return ok
+    end
+
+    if prefer_fsm then
+        fsm_ok = try_fsm()
+        behavior_ok = try_behavior()
+    else
+        behavior_ok = try_behavior()
+        fsm_ok = try_fsm()
+    end
+    runtime.auto_request_source = #sources > 0 and table.concat(sources, " + ") or "无"
+    return behavior_ok or fsm_ok
+end
+
 local function jump_to_dodgebolt()
-    if runtime.behavior_tree == nil then return false end
+    if not is_bow_weapon() then
+        runtime.last_reject_reason = "当前武器不是弓"
+        return false
+    end
+    if not is_weapon_drawn() then
+        runtime.last_reject_reason = "弓未持出"
+        return false
+    end
+    if not is_auto_entry_motion_allowed() then
+        runtime.last_reject_reason = string.format(
+            "当前动作不允许自动GP（Bank %s / Motion %s）",
+            tostring(runtime.bank_id), tostring(runtime.motion_id))
+        return false
+    end
+    if is_dodgebolt_motion(runtime.motion_id) then
+        runtime.last_reject_reason = "已在闪身箭斩动作中"
+        return false
+    end
+    if runtime.pending_auto_frames > 0 then
+        if frame_counter <= runtime.auto_chain_protect_until_frame then
+            runtime.last_reject_reason = "同一攻击链保护"
+        else
+            runtime.last_reject_reason = "自动入口等待动作确认"
+        end
+        return false
+    end
+    if runtime.auto_cycle_lock or runtime.auto_rearm_frames > 0 then
+        runtime.last_reject_reason = runtime.auto_rearm_frames > 0
+            and "闪身箭斩重新触发等待"
+            or "闪身箭斩动作周期锁"
+        return false
+    end
+    if runtime.behavior_tree == nil and runtime.motion_fsm_layer == nil then return false end
     local target = runtime.dodgebolt_node_id or resolve_dodgebolt_node()
     local used_fallback = target == nil
     if used_fallback then target = DODGEBOLT_NODE_FALLBACK end
@@ -479,26 +726,31 @@ local function jump_to_dodgebolt()
     end
     local current = safe_call(runtime.behavior_tree, "getCurrentNodeID", 0)
     if tonumber(current) == tonumber(target) then
-        runtime.auto_protected_count = runtime.auto_protected_count + 1
-        runtime.last_auto_trigger = "自动GP成功"
-        runtime.last_reject_reason = "自动GP成功"
-        return true
+        runtime.last_reject_reason = "已在闪身箭斩入口节点"
+        return false
     end
-    local ok = pcall(function()
-        runtime.behavior_tree:call(
-            "setCurrentNode(System.UInt64, System.UInt32, via.behaviortree.SetNodeInfo)",
-            target, nil, nil)
-    end)
+    local ok = submit_dodgebolt_request(target, false)
     if ok then
         runtime.auto_trigger_count = runtime.auto_trigger_count + 1
         runtime.auto_protected_count = runtime.auto_protected_count + 1
         runtime.last_auto_trigger = "自动GP请求"
         runtime.last_reject_reason = "无"
-        runtime.pending_auto_frames = 60
+        runtime.pending_auto_frames = AUTO_PENDING_FRAMES
+        runtime.auto_pending_age = 0
+        runtime.auto_request_attempts = 1
+        runtime.auto_request_motion = runtime.motion_id
+        runtime.auto_request_node = tonumber(runtime.node_id) or 0
+        runtime.auto_chain_protect_until_frame = frame_counter + AUTO_CHAIN_PROTECT_FRAMES
+        -- A request is not a completed Dodgebolt cycle.  The cycle lock is
+        -- armed only after Motion 452/456 is actually observed below.
+        runtime.auto_cycle_lock = false
+        runtime.auto_cycle_seen_motion = false
+        runtime.auto_rearm_frames = 0
         append_event("自动 GP", { target_node = target })
         return true
     end
     runtime.last_reject_reason = "原版闪身箭斩节点调用失败"
+    runtime.auto_request_source = "无"
     return false
 end
 
@@ -866,19 +1118,97 @@ end
 re.on_frame(function()
     frame_counter = frame_counter + 1
     if not refresh_player() then return end
-    if not is_bow_weapon() then return end
+    if not is_bow_weapon() then
+        runtime.weapon_on = false
+        runtime.weapon_on_source = "当前武器不是弓"
+        runtime.weapon_on_frame = frame_counter
+        runtime.auto_cycle_lock = false
+        runtime.auto_cycle_seen_motion = false
+        runtime.pending_auto_frames = 0
+        runtime.auto_pending_age = 0
+        runtime.auto_request_attempts = 0
+        runtime.auto_chain_protect_until_frame = -100000
+        runtime.auto_rearm_frames = 0
+        runtime.last_enemy_damage_frame = -100000
+        return
+    end
+    if not config.auto_gp and not config.auto_dodgebolt then
+        runtime.auto_cycle_lock = false
+        runtime.auto_cycle_seen_motion = false
+        runtime.pending_auto_frames = 0
+        runtime.auto_pending_age = 0
+        runtime.auto_request_attempts = 0
+        runtime.auto_chain_protect_until_frame = -100000
+        runtime.auto_rearm_frames = 0
+        runtime.last_enemy_damage_frame = -100000
+    end
     apply_known_action_windows()
     extend_dodgebolt_window()
-    if runtime.pending_auto_frames > 0 then
+    local in_dodgebolt_motion = is_dodgebolt_motion(runtime.motion_id)
+    local pending_auto_entry = runtime.pending_auto_frames > 0
+        and runtime.last_auto_trigger == "自动GP请求"
+    if pending_auto_entry then
         runtime.pending_auto_frames = runtime.pending_auto_frames - 1
-        if runtime.motion_id == 452 or runtime.motion_id == 456 then
-            runtime.last_auto_trigger = "自动GP成功"
-            runtime.last_reject_reason = "自动GP成功"
+        runtime.auto_pending_age = runtime.auto_pending_age + 1
+        if in_dodgebolt_motion then
+            runtime.auto_cycle_lock = true
+            runtime.auto_cycle_seen_motion = true
+            runtime.last_auto_trigger = "自动动作已进入"
+            runtime.last_reject_reason = "动作已进入，免伤结果待验证"
             runtime.pending_auto_frames = 0
-            append_event("自动 GP 执行确认", { confirmed_motion = runtime.motion_id })
-        elseif runtime.pending_auto_frames == 0 and runtime.last_auto_trigger == "自动GP请求" then
+            runtime.auto_pending_age = 0
+            append_event("自动 GP 动作进入", { confirmed_motion = runtime.motion_id })
+        elseif runtime.auto_pending_age >= 2 and runtime.auto_request_attempts < 2 then
+            local retry_target = runtime.dodgebolt_node_id or resolve_dodgebolt_node()
+            if retry_target == nil then retry_target = DODGEBOLT_NODE_FALLBACK end
+            local retry_ok = submit_dodgebolt_request(retry_target, true)
+            runtime.auto_request_attempts = runtime.auto_request_attempts + 1
+            if retry_ok then
+                runtime.pending_auto_frames = AUTO_PENDING_FRAMES
+                runtime.auto_pending_age = 0
+                runtime.last_reject_reason = "自动GP已切换请求层重试"
+                append_auto_gp_snapshot("自动GP请求层重试", {
+                    submitted = true,
+                    target_node = retry_target,
+                })
+            else
+                runtime.pending_auto_frames = 0
+                runtime.auto_pending_age = 0
+                runtime.last_auto_trigger = "自动GP未进入动作"
+                runtime.last_reject_reason = "BehaviorTree与MotionFsm2请求均失败"
+            end
+        elseif runtime.pending_auto_frames == 0 then
+            runtime.auto_pending_age = 0
             runtime.last_auto_trigger = "自动GP未进入动作"
-            runtime.last_reject_reason = "原版节点未进入闪身箭斩动作"
+            runtime.last_reject_reason = "请求未被 FSM 接受，未进入452/456"
+        end
+    elseif in_dodgebolt_motion then
+        if runtime.auto_cycle_lock then
+            runtime.auto_cycle_seen_motion = true
+        end
+    else
+        if runtime.auto_cycle_lock and runtime.auto_cycle_seen_motion then
+            -- Keep a small gap after the original action ends.  This prevents
+            -- multi-hit damage from immediately starting another Dodgebolt.
+            local quiet_frames = frame_counter - runtime.last_enemy_damage_frame
+            local quiet_wait
+            if runtime.auto_rearm_frames == 0 then
+                quiet_wait = math.max(8, AUTO_QUIET_GAP_FRAMES - quiet_frames)
+            else
+                quiet_wait = math.max(0, AUTO_QUIET_GAP_FRAMES - quiet_frames)
+            end
+            if runtime.auto_rearm_frames < quiet_wait then
+                runtime.auto_rearm_frames = quiet_wait
+            end
+            runtime.last_reject_reason = "闪身箭斩动作结束，等待攻击间隔"
+        end
+    end
+    if runtime.auto_rearm_frames > 0 then
+        runtime.auto_rearm_frames = runtime.auto_rearm_frames - 1
+        if runtime.auto_rearm_frames == 0 then
+            runtime.auto_cycle_lock = false
+            runtime.auto_cycle_seen_motion = false
+            runtime.last_reject_reason = "无"
         end
     end
     local key = string.format("%d/%d/%s", runtime.bank_id, runtime.motion_id, runtime.node_id)
@@ -886,6 +1216,10 @@ re.on_frame(function()
         last_motion_key = key
         runtime.motion_events = runtime.motion_events + 1
         append_event("动作变化")
+        append_auto_gp_snapshot("自动GP动作轨迹", {
+            motion_key = key,
+            is_dodgebolt_motion = is_dodgebolt_motion(runtime.motion_id),
+        })
     end
     if config.diagnostics and frame_counter - last_reflex_scan_frame >= 30 then
         last_reflex_scan_frame = frame_counter
@@ -910,6 +1244,54 @@ if quest_update_method ~= nil then
     )
 end
 
+-- Cache the game's own weapon-on decision.  This condition is evaluated by
+-- the player FSM for sheathed/drawn transitions and is more reliable than a
+-- weapon type or a motion-number whitelist.
+local weapon_on_condition_type = sdk.find_type_definition(
+    "snow.player.fsm.PlayerFsm2ConditionIsWeaponOn")
+local weapon_on_evaluate_method = weapon_on_condition_type
+    and weapon_on_condition_type:get_method("evaluate") or nil
+local weapon_on_evaluate_context = nil
+if weapon_on_evaluate_method ~= nil then
+    pcall(function()
+        sdk.hook(weapon_on_evaluate_method,
+            function(args)
+                weapon_on_evaluate_context = managed_argument(args[2])
+            end,
+            function(retval)
+                local condition = weapon_on_evaluate_context
+                weapon_on_evaluate_context = nil
+                local ok, raw = pcall(function() return sdk.to_int64(retval) end)
+                if not ok or raw == nil then return retval end
+                local value = tonumber(raw)
+                if value == nil then
+                    local bit_ok, bit_value = pcall(function()
+                        return tonumber(raw) % 2
+                    end)
+                    value = bit_ok and tonumber(bit_value) or nil
+                end
+                if value ~= nil then
+                    runtime.weapon_on_condition_value = value ~= 0
+                    runtime.weapon_on_condition_frame = frame_counter
+                    runtime.weapon_on = runtime.weapon_on_condition_value
+                    runtime.weapon_on_source = "原版 IsWeaponOn 条件"
+                    runtime.weapon_on_frame = frame_counter
+                    if config.diagnostics and condition ~= nil
+                        and last_weapon_on_condition_logged ~= runtime.weapon_on_condition_value then
+                        local expected = safe_field(condition, "v2_Condition")
+                        append_event("持出状态", {
+                            value = runtime.weapon_on_condition_value,
+                            expected = expected,
+                            source = "PlayerFsm2ConditionIsWeaponOn.evaluate",
+                        })
+                        last_weapon_on_condition_logged = runtime.weapon_on_condition_value
+                    end
+                end
+                return retval
+            end)
+    end)
+end
+
 local damage_method = quest_type and quest_type:get_method("checkCalcDamage_DamageSide") or nil
 if damage_method ~= nil then
     local damage_context = nil
@@ -925,42 +1307,102 @@ if damage_method ~= nil then
             local owner_type = safe_call(attack_data, "get_OwnerType")
             local attack_object = safe_call(hit_info, "get_AttackObject")
                 or safe_field(hit_info, "<AttackObject>k__BackingField")
+            local attack_type = type_name(attack_data)
             runtime.last_owner_type = owner_type or -1
             runtime.last_source = tostring(safe_call(attack_object, "get_Name") or "未知来源")
             runtime.damage_events = runtime.damage_events + 1
             damage_context = {
                 owner_type = owner_type or -1,
-                attack_type = type_name(attack_data),
+                attack_type = attack_type,
                 attack_object = attack_object,
+                weapon_on = is_weapon_drawn(),
+                auto_submitted = false,
             }
+            if valid_enemy_attack(damage_context.owner_type, attack_type, attack_object) then
+                runtime.last_enemy_damage_frame = frame_counter
+            end
+            if not damage_context.weapon_on then
+                runtime.last_reject_reason = "弓未持出"
+            elseif runtime.auto_cycle_lock or runtime.auto_rearm_frames > 0 then
+                runtime.last_reject_reason = runtime.auto_rearm_frames > 0
+                    and "闪身箭斩重新触发等待"
+                    or "闪身箭斩动作周期锁"
+            end
             if config.diagnostics then append_event("受击", {
                 owner_type = owner_type,
                 owner_type_name = type_name(attack_data),
                 source = runtime.last_source,
                 attack_object_type = type_name(attack_object),
+                weapon_on = damage_context.weapon_on,
             }) end
+            append_auto_gp_snapshot("自动GP受击前", {
+                owner_type_name = attack_type,
+                attack_object_type = type_name(attack_object),
+                valid_enemy_attack = valid_enemy_attack(
+                    damage_context.owner_type, attack_type, attack_object),
+            })
+            local auto_enabled = config.auto_gp or config.auto_dodgebolt
+            if auto_enabled and damage_context.weapon_on
+                and valid_enemy_attack(damage_context.owner_type, attack_type, attack_object) then
+                damage_context.auto_submitted = jump_to_dodgebolt()
+                append_auto_gp_snapshot(
+                    damage_context.auto_submitted and "自动GP前置入口提交" or "自动GP前置入口拒绝",
+                    { submitted = damage_context.auto_submitted })
+            end
         end,
         function(retval)
             local context = damage_context
             damage_context = nil
-            if context == nil or not is_bow_weapon() then return retval end
+            if context == nil or not is_bow_weapon() or not context.weapon_on then return retval end
             local ok, flow = pcall(function() return sdk.to_int64(retval) end)
             if not ok then return retval end
             runtime.last_damage_flow = flow
+            append_auto_gp_snapshot("自动GP受击后", {
+                original_flow = flow,
+                auto_submitted = context.auto_submitted,
+            })
 
-            local auto_enabled = config.auto_gp or config.auto_dodgebolt
-            if flow == 0 and auto_enabled then
-                if valid_enemy_attack(context.owner_type, context.attack_type, context.attack_object) then
-                    if jump_to_dodgebolt() then
-                        runtime.last_damage_flow = 1
-                        if config.diagnostics then
-                            append_event("自动 GP 拦截", { original_flow = flow })
-                        end
-                        return sdk.to_ptr(1)
+            local chain_protected = not context.auto_submitted
+                and frame_counter <= runtime.auto_chain_protect_until_frame
+                and valid_enemy_attack(
+                    context.owner_type, context.attack_type, context.attack_object)
+            if chain_protected and flow == 0 then
+                runtime.last_reject_reason = "同一攻击链保护"
+                append_auto_gp_snapshot("自动GP同一攻击链拦截", {
+                    original_flow = flow,
+                    submitted = false,
+                })
+                return sdk.to_ptr(1)
+            end
+
+            if context.auto_submitted then
+                if flow == 0 then
+                    if config.diagnostics then
+                        append_event("自动 GP 前置拦截", { original_flow = flow })
                     end
-                else
-                    runtime.last_reject_reason = "攻击来源不是怪物"
+                    append_auto_gp_snapshot("自动GP前置拦截", {
+                        original_flow = flow,
+                        submitted = true,
+                        target_node = runtime.dodgebolt_node_id or DODGEBOLT_NODE_FALLBACK,
+                    })
+                    return sdk.to_ptr(1)
                 end
+                append_auto_gp_snapshot("自动GP前置提交但原流程非零", {
+                    original_flow = flow,
+                    submitted = true,
+                })
+            elseif (config.auto_gp or config.auto_dodgebolt)
+                and valid_enemy_attack(context.owner_type, context.attack_type, context.attack_object) then
+                append_auto_gp_snapshot("自动GP前置入口未提交", {
+                    original_flow = flow,
+                    submitted = false,
+                })
+            elseif config.auto_gp or config.auto_dodgebolt then
+                runtime.last_reject_reason = "攻击来源不是怪物"
+                append_auto_gp_snapshot("自动GP攻击来源过滤", {
+                    original_flow = flow,
+                    submitted = false,
+                })
             end
             return retval
         end
@@ -1014,8 +1456,55 @@ local function slider_int(label, key, min_value, max_value)
     if changed then config[key] = value; save_config() end
 end
 
+local function status_bool(value)
+    if value == true then return "是" end
+    if value == false then return "否" end
+    return "未读取"
+end
+
+local function clear_capture_state()
+    capture.events = {}
+    runtime.damage_events = 0
+    runtime.gp_check_events = 0
+    runtime.reflex_action_events = 0
+    runtime.reflex_condition_events = 0
+    runtime.motion_reflex_target_count = 0
+    runtime.motion_reflex_modified_count = 0
+    runtime.motion_reflex_last_target = "无"
+    runtime.motion_reflex_active_target = "无"
+    runtime.motion_reflex_probe = "无"
+    runtime.known_action_target_count = 0
+    runtime.known_action_modified_count = 0
+    runtime.known_action_probe = "无"
+    runtime.auto_trigger_count = 0
+    runtime.auto_protected_count = 0
+    runtime.last_reflex_signature = "无"
+    runtime.last_reflex_condition = "无"
+    reflex_action_signatures = {}
+    reflex_condition_signatures = {}
+    motion_reflex_targets = {}
+    known_action_original_ends = {}
+    last_motion_key = nil
+    last_weapon_on_condition_logged = nil
+end
+
+local function start_auto_gp_capture()
+    clear_capture_state()
+    config.auto_gp_capture = true
+    append_event("自动GP采集开始", { capture_version = 1 })
+    save_config()
+    save_capture()
+end
+
+local function stop_auto_gp_capture()
+    append_event("自动GP采集结束", { capture_version = 1 })
+    config.auto_gp_capture = false
+    save_config()
+    save_capture()
+end
+
 re.on_draw_ui(function()
-    if not imgui.tree_node("弓箭辅助（诊断版）") then return end
+    if not imgui.tree_node("弓箭辅助") then return end
     checkbox("启用 Mod", "enabled")
     checkbox("自动 GP（自动发动闪身箭斩）", "auto_gp")
     checkbox("自动闪身箭斩兼容开关", "auto_dodgebolt")
@@ -1024,43 +1513,40 @@ re.on_draw_ui(function()
     checkbox("自动检测多人任务", "auto_detect_multiplayer")
     slider_int("手动闪身箭斩延后帧", "dodgebolt_post_frames", 0, 60)
     if imgui.tree_node("运行状态") then
-        imgui.text("武器类型：" .. tostring(runtime.weapon_type) .. "（弓为 13）")
-        imgui.text("动作库 / 动作：" .. tostring(runtime.bank_id) .. " / " .. tostring(runtime.motion_id))
-        imgui.text("当前节点：" .. runtime.node_id)
-        imgui.text("动作帧：" .. string.format("%.2f", runtime.motion_frame))
-        imgui.text("多人任务（任务中）：" .. (runtime.multiplayer and "是" or "否"))
-        imgui.text("联机会话 / 集会所：" .. (runtime.online_session and "是" or "否"))
-        imgui.text("任务状态：" .. tostring(runtime.quest_status)
-            .. "；玩家数：" .. tostring(runtime.player_count))
-        imgui.text("多人检测来源：" .. runtime.multiplayer_signal)
-        imgui.text("动作变化数：" .. tostring(runtime.motion_events))
-        imgui.text("受击事件数：" .. tostring(runtime.damage_events))
-        imgui.text("最近攻击来源：" .. runtime.last_source)
-        imgui.text("最近攻击方类型：" .. tostring(runtime.last_owner_type))
-        imgui.text("最近伤害流程：" .. tostring(runtime.last_damage_flow))
-        imgui.text("GP 判定次数：" .. tostring(runtime.gp_check_events))
-        imgui.text("最近 GP 类型 / 返回值：" .. tostring(runtime.last_gp_check_type)
-            .. " / " .. tostring(runtime.last_gp_result))
-        imgui.text("最近标记：" .. runtime.last_marker)
-        imgui.text("自动 GP 触发次数：" .. tostring(runtime.auto_trigger_count))
-        imgui.text("自动 GP 拦截次数：" .. tostring(runtime.auto_protected_count))
-        imgui.text("最近自动动作：" .. runtime.last_auto_trigger)
-        imgui.text("最近状态：" .. runtime.last_reject_reason)
-        imgui.text("闪身箭斩节点：" .. tostring(runtime.dodgebolt_node_id or "兼容回退"))
-        imgui.text("反射动作 / 成功条件：" .. tostring(runtime.reflex_action_count)
-            .. " / " .. tostring(runtime.reflex_condition_count))
-        imgui.text("反射扫描事件：" .. tostring(runtime.reflex_action_events)
-            .. " / " .. tostring(runtime.reflex_condition_events))
-        imgui.text("最近反射动作：" .. runtime.last_reflex_signature)
-        imgui.text("最近成功条件：" .. runtime.last_reflex_condition)
-        imgui.text("Motion FSM Act10 目标 / 已修改：" .. tostring(runtime.motion_reflex_target_count)
-            .. " / " .. tostring(runtime.motion_reflex_modified_count))
-        imgui.text("Motion FSM 节点数：" .. tostring(runtime.motion_tree_node_count))
-        imgui.text("Motion FSM 目标摘要：" .. runtime.motion_reflex_last_target)
-        imgui.text("Act10 探测：" .. runtime.motion_reflex_probe)
-        imgui.text("已知 Action 目标 / 已修改：" .. tostring(runtime.known_action_target_count)
-            .. " / " .. tostring(runtime.known_action_modified_count))
-        imgui.text("Action 探测：" .. string.sub(runtime.known_action_probe, 1, 260))
+        imgui.text("武器类型: " .. tostring(runtime.weapon_type))
+        imgui.text("弓是否持出: " .. status_bool(runtime.weapon_on))
+        imgui.text("持出状态来源: " .. tostring(runtime.weapon_on_source))
+        imgui.text(string.format("Bank / Motion / Node: %s / %s / %s",
+            tostring(runtime.bank_id), tostring(runtime.motion_id), tostring(runtime.node_id)))
+        imgui.text("当前动作允许自动GP: " .. status_bool(is_auto_entry_motion_allowed()))
+        imgui.text("自动功能: " .. status_bool(config.auto_gp or config.auto_dodgebolt))
+        imgui.text("自动周期锁: " .. status_bool(runtime.auto_cycle_lock))
+        imgui.text("自动入口等待帧: " .. tostring(runtime.pending_auto_frames))
+        imgui.text("自动入口等待年龄: " .. tostring(runtime.auto_pending_age))
+        imgui.text("自动请求路径: " .. tostring(runtime.auto_request_source))
+        imgui.text("自动请求次数: " .. tostring(runtime.auto_request_attempts))
+        imgui.text("同一攻击链保护剩余帧: " .. tostring(math.max(
+            0, runtime.auto_chain_protect_until_frame - frame_counter)))
+        imgui.text("自动重新触发等待: " .. tostring(runtime.auto_rearm_frames))
+        imgui.text("最近自动动作: " .. tostring(runtime.last_auto_trigger))
+        imgui.text("最近拒绝原因: " .. tostring(runtime.last_reject_reason))
+        imgui.text("最近攻击来源: " .. tostring(runtime.last_source))
+        imgui.text("最近攻击 OwnerType: " .. tostring(runtime.last_owner_type))
+        imgui.text("最近伤害流程: " .. tostring(runtime.last_damage_flow))
+        imgui.text(string.format("自动请求 / 拦截: %d / %d",
+            runtime.auto_trigger_count, runtime.auto_protected_count))
+        imgui.text(string.format("动作树节点数: %d；自动确认 Motion: 452/456",
+            runtime.motion_tree_node_count))
+        imgui.tree_pop()
+    end
+    if imgui.tree_node("自动GP诊断采集") then
+        imgui.text("采集状态: " .. status_bool(config.auto_gp_capture))
+        if not config.auto_gp_capture then
+            if imgui.button("开始自动GP采集") then start_auto_gp_capture() end
+        else
+            if imgui.button("结束并保存自动GP采集") then stop_auto_gp_capture() end
+        end
+        imgui.text("保存文件: " .. CAPTURE_PATH)
         imgui.tree_pop()
     end
     if imgui.tree_node("采集标记") then
@@ -1070,27 +1556,7 @@ re.on_draw_ui(function()
         if imgui.button("标记：GP 成功") then marker("GP 成功") end
         if imgui.button("标记：GP 过晚") then marker("GP 过晚") end
         if imgui.button("清空采集") then
-            capture.events = {}
-            runtime.damage_events = 0
-            runtime.gp_check_events = 0
-            runtime.reflex_action_events = 0
-            runtime.reflex_condition_events = 0
-            runtime.motion_reflex_target_count = 0
-            runtime.motion_reflex_modified_count = 0
-            runtime.motion_reflex_last_target = "无"
-            runtime.motion_reflex_active_target = "无"
-            runtime.motion_reflex_probe = "无"
-            runtime.known_action_target_count = 0
-            runtime.known_action_modified_count = 0
-            runtime.known_action_probe = "无"
-            runtime.auto_trigger_count = 0
-            runtime.auto_protected_count = 0
-            runtime.last_reflex_signature = "无"
-            runtime.last_reflex_condition = "无"
-            reflex_action_signatures = {}
-            reflex_condition_signatures = {}
-            motion_reflex_targets = {}
-            known_action_original_ends = {}
+            clear_capture_state()
             save_capture()
         end
         if imgui.button("保存采集") then save_capture() end
@@ -1105,4 +1571,4 @@ re.on_config_save(function()
 end)
 
 save_config()
-log.info("[BowAssist] Diagnostic build loaded. Automatic actions are inactive.")
+log.info("[BowAssist] loaded. Automatic actions are inactive.")

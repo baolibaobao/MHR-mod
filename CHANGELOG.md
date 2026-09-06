@@ -1,5 +1,13 @@
 # Changelog
 
+## Verified development baseline - 2026-09-06
+
+- 同步已验证的太刀 `LongSwordAssist.lua`、弓 `BowAssist.lua` 和独立弓箭参数脚本 `BowBalance.lua`。
+- 修复弓自动 GP 同一攻击链在相邻帧重复进入 `DamageSide` 时的二次结算；入口提交后保护 3 帧，不重复释放闪身箭斩，并在实际进入 `Motion 452/456` 后才启动周期锁。
+- 归档最新弓箭采集 JSON、太刀神威采集脚本，以及 Bow/LongSword 的 FSM、motlist、motbank 原始动作资源和提取工具源码。
+- 更新开发说明，明确区分运行时动作确认、同链保护、周期锁和手动判定延长。
+- 本次只同步源码、分析资料和开发工具源码，不同步安装包、DLL、配置、备份或 GitHub Release。
+
 ## Development notes - 2026-09-04
 
 - 同步弓箭独立 Mod 源码 `BowAssist/reframework/autorun/BowAssist.lua` 及使用说明。
